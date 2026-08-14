@@ -8,7 +8,7 @@ export interface ApiError {
 }
 
 export const axiosClient: AxiosInstance = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL,
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "/api",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",

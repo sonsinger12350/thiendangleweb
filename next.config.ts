@@ -4,6 +4,7 @@ const backendApiUrl =
   process.env.API_URL?.replace(/\/$/, "") ?? "https://thiendangle.com/api";
 
 const nextConfig: NextConfig = {
+  output: "standalone",
   async rewrites() {
     return [
       {
