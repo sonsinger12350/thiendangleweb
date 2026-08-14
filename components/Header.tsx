@@ -12,15 +12,34 @@ export default function Header() {
 	const navLinks = [
 		{ href: "/#trang-chu", label: "Trang chủ", active: pathname === "/" },
 		{ href: "/#gioi-thieu", label: "Giới thiệu", active: false },
-		{ href: "/san-pham", label: "Sản phẩm", active: pathname === "/san-pham" },
+		{
+			href: "/san-pham",
+			label: "Sản phẩm",
+			active: pathname === "/san-pham",
+		},
 		{ href: "/tin-tuc", label: "Tin tức", active: pathname === "/tin-tuc" },
 	];
 
 	return (
 		<header>
 			<div className="wrap nav">
-				<Link className="brand" href="/#trang-chu" onClick={() => setMenuOpen(false)}>
-					<Image src="/logo.png" alt="Logo TDL" width={54} height={54} />
+				<Link
+					className="brand"
+					href="/#trang-chu"
+					onClick={() => setMenuOpen(false)}
+				>
+					<Image
+						src="/Logo_symbol.png"
+						alt="Logo TDL"
+						width={54}
+						height={54}
+					/>
+					{/* <Image
+						src="/logo.png"
+						alt="Logo TDL"
+						width={54}
+						height={54}
+					/> */}
 					<span>
 						TDL — THIÊN ĐĂNG LÊ
 						<small>Kiến tạo trật tự an tâm</small>
@@ -54,7 +73,11 @@ export default function Header() {
 							{link.label}
 						</Link>
 					))}
-					<Link className="pill" href="/#lien-he" onClick={() => setMenuOpen(false)}>
+					<Link
+						className="pill"
+						href="/#lien-he"
+						onClick={() => setMenuOpen(false)}
+					>
 						Liên hệ
 					</Link>
 				</nav>
