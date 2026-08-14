@@ -1394,10 +1394,15 @@ html {
 	box-shadow: 0 12px 36px rgba(11, 29, 58, 0.06);
 }
 
-.filters h3 {
+.filters h3,
+.filters-title {
 	margin: 0 0 14px;
 	font-size: 18px;
 	color: var(--navy);
+}
+
+.filters-toggle {
+	display: none;
 }
 
 .filter-group {
@@ -1506,6 +1511,63 @@ html {
 	color: var(--navy);
 }
 
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-top: 28px;
+}
+
+.pagination-pages {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.pagination-nav,
+.pagination-pages button {
+	min-width: 40px;
+	height: 40px;
+	padding: 0 14px;
+	border: 1px solid var(--line);
+	border-radius: 12px;
+	background: #fff;
+	color: var(--navy);
+	font: inherit;
+	font-size: 14px;
+	font-weight: 750;
+	cursor: pointer;
+	transition: 0.18s;
+}
+
+.pagination-nav:hover:not(:disabled),
+.pagination-pages button:hover:not(:disabled):not(.active) {
+	border-color: var(--navy);
+	background: var(--ivory);
+}
+
+.pagination-pages button.active {
+	background: var(--navy);
+	border-color: var(--navy);
+	color: #fff;
+}
+
+.pagination-nav:disabled,
+.pagination-pages button:disabled {
+	opacity: 0.45;
+	cursor: not-allowed;
+}
+
+.pagination-ellipsis {
+	min-width: 24px;
+	text-align: center;
+	color: var(--muted);
+	font-weight: 700;
+}
+
 .product-list {
 	display: grid;
 	grid-template-columns: repeat(4, 1fr);
@@ -1594,6 +1656,13 @@ html {
 	font-size: 12px;
 }
 
+.product-price {
+	font-size: 16px;
+	font-weight: 800;
+	color: var(--navy);
+	letter-spacing: 0.2px;
+}
+
 .status-pill {
 	display: inline-flex;
 	padding: 6px 12px;
@@ -1651,6 +1720,77 @@ html {
 
 	.filters {
 		position: static;
+		padding: 0;
+	}
+
+	.filters-title {
+		display: none;
+	}
+
+	.filters-toggle {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		width: 100%;
+		padding: 16px 18px;
+		border: 0;
+		background: transparent;
+		color: var(--navy);
+		font: inherit;
+		font-size: 18px;
+		font-weight: 700;
+		font-family: "Noto Serif", Georgia, serif;
+		cursor: pointer;
+		text-align: left;
+	}
+
+	.filters-toggle span {
+		display: inline-flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.filters-toggle small {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-width: 22px;
+		height: 22px;
+		padding: 0 6px;
+		border-radius: 999px;
+		background: var(--navy);
+		color: #fff;
+		font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+		font-size: 11px;
+		font-weight: 800;
+	}
+
+	.filters-chevron {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		width: 16px;
+		height: 16px;
+		color: var(--ink);
+		transition: transform 0.2s;
+	}
+
+	.filters-chevron svg {
+		display: block;
+	}
+
+	.filters.is-open .filters-chevron {
+		transform: rotate(180deg);
+	}
+
+	.filters-body {
+		display: none;
+		padding: 0 18px 18px;
+	}
+
+	.filters.is-open .filters-body {
+		display: block;
 	}
 
 	.product-list {
