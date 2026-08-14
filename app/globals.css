@@ -75,17 +75,6 @@ img {
 	margin: auto;
 }
 
-.topline {
-	height: 6px;
-	background: linear-gradient(
-		90deg,
-		var(--navy) 0 30%,
-		var(--gold) 30% 52%,
-		var(--pink) 52% 73%,
-		var(--ivory) 73%
-	);
-}
-
 header {
 	position: sticky;
 	top: 0;
@@ -1025,7 +1014,7 @@ h2 {
 	}
 
 	.orbit-center {
-		height: 220px;
+		height: 350px;
 		border-radius: 28px;
 	}
 
@@ -1050,7 +1039,7 @@ h2 {
 	}
 
 	.hero-copy {
-		padding: 68px 20px 56px;
+		padding: 32px 20px 32px;
 	}
 
 	.hero-art {
@@ -1103,6 +1092,35 @@ h2 {
 
 	.float-tag {
 		display: none;
+	}
+
+	.vertical-word {
+		height: 280px;
+	}
+
+	.orbit-center {
+		height: 250px;
+		border-radius: 28px;
+	}
+}
+
+@media (max-width: 480px) {
+	.orbit-center {
+		height: 200px;
+	}
+}
+
+@media (max-width: 350px) {
+	.wrap.nav {
+		gap: 8px;
+	}
+
+	.wrap.nav .brand {
+		gap: 6px;
+	}
+
+	.wrap.nav .brand span {
+		font-size: 13px;
 	}
 }
 
@@ -1392,6 +1410,8 @@ html {
 	border-radius: 24px;
 	background: white;
 	box-shadow: 0 12px 36px rgba(11, 29, 58, 0.06);
+	height: 85vh;
+    overflow-y: scroll;
 }
 
 .filters h3,
@@ -1721,6 +1741,8 @@ html {
 	.filters {
 		position: static;
 		padding: 0;
+		height: auto;
+		max-height: 400px;
 	}
 
 	.filters-title {
@@ -2015,5 +2037,9 @@ html {
 
 	.pagehero {
 		padding: 72px 0 52px;
+	}
+
+	.node {
+		align-items: center;
 	}
 }

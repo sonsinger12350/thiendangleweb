@@ -40,7 +40,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 		>
 			<body className={`${inter.variable} ${notoSerif.variable}`}>
 				<Providers>
-					<div className="topline" />
 					<Header />
 					<main>{children}</main>
 					<Footer />
