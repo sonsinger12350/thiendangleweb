@@ -1,18 +1,10 @@
+import type { WebsiteNewsParams } from "@/types/news";
 import type { WebsiteProductParams } from "@/types/products";
 
-export function buildProductQueryString(params: WebsiteProductParams): string {
+function toQueryString(
+  entries: [string, string | number | boolean | undefined][],
+): string {
   const searchParams = new URLSearchParams();
-
-  const entries: [string, string | number | undefined][] = [
-    ["search", params.search],
-    ["category_id", params.category_id],
-    ["product_group_id", params.product_group_id],
-    ["brand_id", params.brand_id],
-    ["sort_by", params.sort_by],
-    ["sort_direction", params.sort_direction],
-    ["page", params.page],
-    ["limit", params.limit],
-  ];
 
   for (const [key, value] of entries) {
     if (value === undefined || value === "") continue;
@@ -21,4 +13,28 @@ export function buildProductQueryString(params: WebsiteProductParams): string {
 
   const query = searchParams.toString();
   return query ? `?${query}` : "";
+}
+
+export function buildProductQueryString(params: WebsiteProductParams): string {
+  return toQueryString([
+    ["search", params.search],
+    ["category_id", params.category_id],
+    ["product_group_id", params.product_group_id],
+    ["brand_id", params.brand_id],
+    ["sort_by", params.sort_by],
+    ["sort_direction", params.sort_direction],
+    ["page", params.page],
+    ["limit", params.limit],
+  ]);
+}
+
+export function buildNewsQueryString(params: WebsiteNewsParams): string {
+  return toQueryString([
+    ["search", params.search],
+    ["category_id", params.category_id],
+    ["category", params.category],
+    ["is_featured", params.is_featured],
+    ["page", params.page],
+    ["limit", params.limit],
+  ]);
 }

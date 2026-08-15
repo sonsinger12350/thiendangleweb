@@ -25,3 +25,10 @@ export const useGetProductFilters = () => {
     queryFn: () => ProductService.getFilters(),
   });
 };
+
+export const useGetHomepageProducts = () => {
+  return useQuery({
+    queryKey: queryKeys.products.homepage,
+    queryFn: () => ProductService.getHomepageProducts(),
+  });
+};

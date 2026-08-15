@@ -99,6 +99,12 @@ export const queryKeys = {
   products: {
     all: ["products"] as const,
     filters: ["productFilters"] as const,
+    homepage: ["homepageProducts"] as const,
     product: (id: string) => ["product", id] as const,
+  },
+  news: {
+    all: ["news"] as const,
+    categories: ["newsCategories"] as const,
+    article: (slug: string) => ["news", slug] as const,
   },
 };

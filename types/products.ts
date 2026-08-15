@@ -27,6 +27,14 @@ export interface ProductFilters {
   product_groups: SelectOption[];
 }
 
+export interface HomepageProduct {
+  id: number;
+  product_id: number;
+  sort_order: number;
+  description?: string | null;
+  product: Product;
+}
+
 export interface WebsiteProductParams {
   search?: string;
   category_id?: number;

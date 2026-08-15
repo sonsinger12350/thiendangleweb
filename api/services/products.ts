@@ -1,5 +1,6 @@
 import { ApiResponse } from "@/types";
 import {
+  HomepageProduct,
   Product,
   ProductFilters,
   WebsiteProductParams,
@@ -29,6 +30,13 @@ export default class ProductService {
   static async getFilters(): Promise<ApiResponse<ProductFilters>> {
     const { data: res } = await axiosClient.get<ApiResponse<ProductFilters>>(
       WebsiteProductEndpoints.filters()
+    );
+    return res;
+  }
+
+  static async getHomepageProducts(): Promise<ApiResponse<HomepageProduct[]>> {
+    const { data: res } = await axiosClient.get<ApiResponse<HomepageProduct[]>>(
+      WebsiteProductEndpoints.homepage()
     );
     return res;
   }
