@@ -317,9 +317,7 @@ export default function Home() {
 							<p>
 								Các trao đổi chính thức được thực hiện qua thư
 								điện tử thuộc tên miền @thiendangle.com.{" "}
-								<b>TDL</b> là thương hiệu giới thiệu; thông tin
-								pháp nhân (tên công ty, MST, địa chỉ) sẽ cập
-								nhật sau khi hoàn tất đăng ký.
+								<b>TDL</b> là thương hiệu giới thiệu;
 							</p>
 							<div className="contact-list">
 								<div>
@@ -339,17 +337,7 @@ export default function Home() {
 								<div>
 									<b>Website chính thức</b>
 									<br />
-									thiendangle.vn
-								</div>
-								<div>
-									<b>Hệ tên miền</b>
-									<br />
-									thiendangle.com — email &amp; quốc tế
-									<br />
-									<span style={{ opacity: 0.85 }}>
-										.cloud · .ai · .info · .logistics · .eco
-										— đang chuẩn bị
-									</span>
+									thiendangle.com
 								</div>
 							</div>
 						</aside>

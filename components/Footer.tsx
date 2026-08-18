@@ -48,7 +48,7 @@ export default function Footer() {
 						<a href="mailto:support@thiendangle.com">
 							support@thiendangle.com
 						</a>
-						<p>thiendangle.vn</p>
+						<p>thiendangle.com</p>
 						<p
 							style={{
 								marginTop: 10,
@@ -60,10 +60,7 @@ export default function Footer() {
 						</p>
 					</div>
 				</div>
-				<div className="copy">
-					<span>© 2026 TDL — Thiên Đăng Lê.</span>
-					<span>Minh bạch · Kỷ cương · Zero Trust · Thực chiến</span>
-				</div>
+				<div className="copy">© 2026 TDL — Thiên Đăng Lê.</div>
 			</div>
 		</footer>
 	);
