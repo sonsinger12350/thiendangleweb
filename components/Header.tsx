@@ -29,7 +29,7 @@ export default function Header() {
 					onClick={() => setMenuOpen(false)}
 				>
 					<Image
-						src="/Logo_symbol.png"
+						src="/logo/Logo_symbol.png"
 						alt="Logo TDL"
 						width={54}
 						height={54}

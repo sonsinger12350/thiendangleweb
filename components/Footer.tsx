@@ -9,7 +9,7 @@ export default function Footer() {
 					<div>
 						<Link className="brand" href="/#trang-chu">
 							<Image
-								src="/Logo_symbol.png"
+								src="/logo/Logo_symbol.png"
 								alt="Logo TDL"
 								width={54}
 								height={54}

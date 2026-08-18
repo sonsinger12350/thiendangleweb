@@ -24,8 +24,8 @@ export const metadata: Metadata = {
 		template: "%s | TDL — Thiên Đăng Lê",
 	},
 	icons: {
-		icon: "/favicon.png",
-		apple: "/favicon.png",
+		icon: "/logo/favicon.png",
+		apple: "/logo/favicon.png",
 	},
 	description:
 		"TDL — Thiên Đăng Lê: hệ sinh thái thương mại – công nghệ. Ưu tiên phụ kiện điện thoại; điện gia dụng và mở rộng theo điều kiện sẵn sàng.",

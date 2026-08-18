@@ -49,7 +49,7 @@ export default function Home() {
 							</div>
 							<div className="logo-orbit">
 								<Image
-									src="/Logo_symbol.png"
+									src="/logo/Logo_symbol.png"
 									alt="Biểu tượng TDL"
 									width={390}
 									height={390}
@@ -84,7 +84,7 @@ export default function Home() {
 						<div className="orbit">
 							<div className="orbit-center">
 								<Image
-									src="/Logo_symbol.png"
+									src="/logo/Logo_symbol.png"
 									alt="TDL"
 									width={158}
 									height={158}
@@ -93,7 +93,7 @@ export default function Home() {
 							<div className="node n1">
 								<Image
 									className="node-logo"
-									src="/hong-duc.webp"
+									src="/logo/hong-duc.jpg"
 									alt="Logo Hồng Đức"
 									width={54}
 									height={54}
@@ -104,7 +104,7 @@ export default function Home() {
 							<div className="node n2">
 								<Image
 									className="node-logo"
-									src="/hung-thinh.webp"
+									src="/logo/hung-thinh.jpg"
 									alt="Logo Hưng & Thịnh"
 									width={54}
 									height={54}
@@ -115,7 +115,7 @@ export default function Home() {
 							<div className="node n3">
 								<Image
 									className="node-logo"
-									src="/tam-an-viet.webp"
+									src="/logo/tam-an-viet.jpg"
 									alt="Logo Tâm An Việt"
 									width={54}
 									height={54}
@@ -126,7 +126,7 @@ export default function Home() {
 							<div className="node n4">
 								<Image
 									className="node-logo"
-									src="/long-hanh.webp"
+									src="/logo/long-hanh.jpg"
 									alt="Logo Long Hành"
 									width={54}
 									height={54}
@@ -137,7 +137,7 @@ export default function Home() {
 							<div className="node n5">
 								<Image
 									className="node-logo"
-									src="/d-tech.webp"
+									src="/logo/d-tech.jpg"
 									alt="Logo D-Tech"
 									width={54}
 									height={54}
@@ -148,7 +148,7 @@ export default function Home() {
 							<div className="node n6">
 								<Image
 									className="node-logo"
-									src="/anh-nhat.webp"
+									src="/logo/anh-nhat.jpg"
 									alt="Logo Ánh Nhật"
 									width={54}
 									height={54}
