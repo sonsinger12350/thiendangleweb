@@ -18,6 +18,6 @@ jobs:
           timeout: 60s
           command_timeout: 300s
           script: |
-            cd /var/www/thiendangleweb
+            cd /var/www/html/thiendangleweb
             git pull origin main
             docker compose up -d --build --remove-orphans
