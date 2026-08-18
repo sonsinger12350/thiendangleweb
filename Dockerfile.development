@@ -1,0 +1,21 @@
+ARG NODE_VERSION=22-bookworm-slim
+
+FROM node:${NODE_VERSION}
+
+WORKDIR /app
+
+ENV NODE_ENV=development
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV HOSTNAME=0.0.0.0
+ENV PORT=3000
+
+COPY package.json package-lock.json ./
+
+RUN --mount=type=cache,target=/root/.npm \
+  npm ci --no-audit --no-fund
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "run", "dev"]
