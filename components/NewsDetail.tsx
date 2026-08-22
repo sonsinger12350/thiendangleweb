@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useGetNewsBySlug } from "@/api/queries/news";
+import NewsLatestSidebar from "@/components/NewsLatestSidebar";
 
 const FALLBACK_IMAGE = "/tin-phu-kien.png";
 
@@ -28,64 +29,118 @@ export default function NewsDetail() {
 		article?.thumbnail_url || article?.thumbnail || FALLBACK_IMAGE;
 
 	if (isLoading) {
-		return <p style={{ color: "var(--muted)" }}>Đang tải bài viết...</p>;
+		return (
+			<>
+				<section className="pagehero">
+					<div className="wrap">
+						<div className="crumb">
+							<Link href="/tin-tuc">TDL / Tin tức</Link>
+						</div>
+					</div>
+				</section>
+				<section className="section">
+					<div className="wrap news-detail-wrap">
+						<p style={{ color: "var(--muted)" }}>Đang tải bài viết...</p>
+					</div>
+				</section>
+			</>
+		);
 	}
 
 	if (isError || !article) {
 		return (
-			<div className="news-empty show">
-				Không tìm thấy bài viết.
-				<div style={{ marginTop: 16 }}>
-					<Link className="btn dark" href="/tin-tuc">
-						Quay lại tin tức
-					</Link>
-				</div>
-			</div>
+			<>
+				<section className="pagehero">
+					<div className="wrap">
+						<div className="crumb">
+							<Link href="/tin-tuc">TDL / Tin tức</Link>
+						</div>
+					</div>
+				</section>
+				<section className="section">
+					<div className="wrap news-detail-wrap">
+						<div className="news-empty show">
+							Không tìm thấy bài viết.
+							<div style={{ marginTop: 16 }}>
+								<Link className="btn dark" href="/tin-tuc">
+									Quay lại tin tức
+								</Link>
+							</div>
+						</div>
+					</div>
+				</section>
+			</>
 		);
 	}
 
 	return (
-		<article className="news-detail">
-			<div className="meta">
-				{article.published_at && (
-					<span>{formatNewsDate(article.published_at)}</span>
-				)}
-				{article.category?.name && (
-					<>
-						<span>·</span>
-						<span>{article.category.name}</span>
-					</>
-				)}
-			</div>
-			<h1 className="text-4xl font-bold">{article.title}</h1>
-			{article.excerpt && <p className="lead">{article.excerpt}</p>}
-			<div className="thumb">
-				<Image
-					src={image}
-					alt={article.title}
-					width={1200}
-					height={675}
-					unoptimized={Boolean(image.startsWith("http"))}
-				/>
-			</div>
-			{article.content && (
-				<div
-					className="news-content"
-					dangerouslySetInnerHTML={{ __html: article.content }}
-				/>
-			)}
-			{article.external_url && (
-				<p>
-					<Link
-						className="more"
-						href={article.external_url}
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						Xem nguồn gốc →
-					</Link>
-				</p>
-			)}
-		</article>
+		<>
+			<section className="pagehero">
+				<div className="wrap">
+					<div className="crumb">
+						<Link href="/tin-tuc">TDL / Tin tức</Link>
+						{article.title ? ` / ${article.title}` : ""}
+					</div>
+				</div>
+			</section>
+			<section className="section">
+				<div className="wrap">
+					<div className="news-detail-wrap">
+						<article className="news-detail">
+							<div className="meta">
+								{article.published_at && (
+									<span>{formatNewsDate(article.published_at)}</span>
+								)}
+								{article.category?.name && (
+									<>
+										<span>·</span>
+										<span>{article.category.name}</span>
+									</>
+								)}
+							</div>
+							<h1 className="text-4xl font-bold">{article.title}</h1>
+							{article.excerpt && <p className="lead">{article.excerpt}</p>}
+							<div className="thumb">
+								<Image
+									src={image}
+									alt={article.title}
+									width={1200}
+									height={675}
+									unoptimized={Boolean(image.startsWith("http"))}
+								/>
+							</div>
+							{article.content && (
+								<div
+									className="news-content"
+									dangerouslySetInnerHTML={{ __html: article.content }}
+								/>
+							)}
+							{article.external_url && (
+								<p>
+									<Link
+										className="more"
+										href={article.external_url}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										Xem nguồn gốc →
+									</Link>
+								</p>
+							)}
+						</article>
+						<NewsLatestSidebar excludeId={article.id} />
+					</div>
+					<div className="cta" style={{ marginTop: 42 }}>
+						<div>
+							<div className="kicker">Theo dõi cập nhật</div>
+							<h2>Nhận thông tin danh mục và hợp tác phân phối từ TDL.</h2>
+						</div>
+						<Link className="btn dark" href="/#lien-he">
+							Liên hệ ngay
+						</Link>
+					</div>
+				</div>
+			</section>
+		</>
 	);
 }

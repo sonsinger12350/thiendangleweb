@@ -100,9 +100,12 @@ export default function NewsGrid() {
 					const isExternal = Boolean(article.external_url);
 
 					return (
-						<article
+						<Link
 							key={article.id}
+							href={href}
 							className={`news-card${article.is_featured ? " news-featured" : ""}`}
+							target={isExternal ? "_blank" : undefined}
+							rel={isExternal ? "noopener noreferrer" : undefined}
 						>
 							<div className="thumb">
 								<Image
@@ -128,16 +131,11 @@ export default function NewsGrid() {
 								</div>
 								<h3>{article.title}</h3>
 								{article.excerpt && <p>{article.excerpt}</p>}
-								<Link
-									className="more"
-									href={href}
-									target={isExternal ? "_blank" : undefined}
-									rel={isExternal ? "noopener noreferrer" : undefined}
-								>
+								<span className="more">
 									{isExternal ? "Xem thêm →" : "Đọc thêm →"}
-								</Link>
+								</span>
 							</div>
-						</article>
+						</Link>
 					);
 				})}
 				<div

@@ -12,6 +12,7 @@ export const WebsiteContactEndpoints = {
 
 export const WebsiteNewsEndpoints = {
   getAll: (params?: string) => `/website/news${params ?? ""}`,
+  latest: (params?: string) => `/website/news/latest${params ?? ""}`,
   getBySlug: (slug: string) => `/website/news/${slug}`,
   categories: (params?: string) => `/website/news/categories${params ?? ""}`,
 } as const;

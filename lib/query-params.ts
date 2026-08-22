@@ -1,4 +1,4 @@
-import type { WebsiteNewsParams } from "@/types/news";
+import type { WebsiteLatestNewsParams, WebsiteNewsParams } from "@/types/news";
 import type { WebsiteProductParams } from "@/types/products";
 
 function toQueryString(
@@ -36,5 +36,14 @@ export function buildNewsQueryString(params: WebsiteNewsParams): string {
     ["is_featured", params.is_featured],
     ["page", params.page],
     ["limit", params.limit],
+  ]);
+}
+
+export function buildLatestNewsQueryString(
+  params: WebsiteLatestNewsParams,
+): string {
+  return toQueryString([
+    ["limit", params.limit],
+    ["exclude_id", params.exclude_id],
   ]);
 }

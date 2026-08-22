@@ -34,3 +34,8 @@ export interface WebsiteNewsParams {
   page?: number;
   limit?: number;
 }
+
+export interface WebsiteLatestNewsParams {
+  limit?: number;
+  exclude_id?: number;
+}

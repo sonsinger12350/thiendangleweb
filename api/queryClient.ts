@@ -105,6 +105,7 @@ export const queryKeys = {
   news: {
     all: ["news"] as const,
     categories: ["newsCategories"] as const,
+    latest: ["newsLatest"] as const,
     article: (slug: string) => ["news", slug] as const,
   },
 };

@@ -1,6 +1,6 @@
 import { ApiResponse } from "@/types";
-import { NewsArticle, NewsCategory, WebsiteNewsParams } from "@/types/news";
-import { buildNewsQueryString } from "@/lib/query-params";
+import { NewsArticle, NewsCategory, WebsiteLatestNewsParams, WebsiteNewsParams } from "@/types/news";
+import { buildLatestNewsQueryString, buildNewsQueryString } from "@/lib/query-params";
 import axiosClient from "../axiosClient";
 import { WebsiteNewsEndpoints } from "../endpoints";
 
@@ -27,6 +27,16 @@ export default class NewsService {
   static async getCategories(): Promise<ApiResponse<NewsCategory[]>> {
     const { data: res } = await axiosClient.get<ApiResponse<NewsCategory[]>>(
       WebsiteNewsEndpoints.categories(),
+    );
+    return res;
+  }
+
+  static async getLatest(
+    params: WebsiteLatestNewsParams = {},
+  ): Promise<ApiResponse<NewsArticle[]>> {
+    const query = buildLatestNewsQueryString(params);
+    const { data: res } = await axiosClient.get<ApiResponse<NewsArticle[]>>(
+      WebsiteNewsEndpoints.latest(query),
     );
     return res;
   }
