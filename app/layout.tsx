@@ -2,11 +2,8 @@ import type { Metadata } from "next";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Providers from "@/components/Providers";
-<<<<<<< Updated upstream
 import { Inter, Noto_Serif } from "next/font/google";
-=======
 import BackToTop from "@/components/BackToTop";
->>>>>>> Stashed changes
 import "./globals.css";
 import { cn } from "@/lib/util";
 import { rootLayoutMetadata } from "@/lib/seo/metadata";
