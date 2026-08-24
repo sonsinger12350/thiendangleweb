@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Serif } from "next/font/google";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import Providers from "@/components/Providers";
+import { Inter, Noto_Serif } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/util";
+import { rootLayoutMetadata } from "@/lib/seo/metadata";
+import { resolveLandingSeo } from "@/lib/seo/resolvers";
 
 const inter = Inter({
 	variable: "--font-inter",
@@ -18,18 +20,7 @@ const notoSerif = Noto_Serif({
 	weight: ["400", "700"],
 });
 
-export const metadata: Metadata = {
-	title: {
-		default: "TDL — Thiên Đăng Lê | Website giới thiệu",
-		template: "%s | TDL — Thiên Đăng Lê",
-	},
-	icons: {
-		icon: "/logo/favicon.png",
-		apple: "/logo/favicon.png",
-	},
-	description:
-		"TDL — Thiên Đăng Lê: hệ sinh thái thương mại – công nghệ. Ưu tiên phụ kiện điện thoại; điện gia dụng và mở rộng theo điều kiện sẵn sàng.",
-};
+export const metadata: Metadata = rootLayoutMetadata(resolveLandingSeo());
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
 	return (
@@ -39,9 +30,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
 			className={cn("font-sans", inter.variable)}
 		>
 			<body className={`${inter.variable} ${notoSerif.variable}`}>
+				<a className="skip-link" href="#main-content">
+					Bỏ qua nội dung điều hướng
+				</a>
 				<Providers>
 					<Header />
-					<main>{children}</main>
+					<main id="main-content">{children}</main>
 					<Footer />
 				</Providers>
 			</body>

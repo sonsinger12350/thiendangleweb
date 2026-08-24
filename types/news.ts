@@ -23,7 +23,12 @@ export interface NewsArticle {
   is_featured?: boolean;
   status?: string;
   published_at?: string | null;
+  updated_at?: string | null;
   description?: string | null;
+  seo_title?: string | null;
+  seo_description?: string | null;
+  seo_keywords?: string | null;
+  author?: string | null;
 }
 
 export interface WebsiteNewsParams {

@@ -17,7 +17,12 @@ export default function Header() {
 			label: "Sản phẩm",
 			active: pathname === "/san-pham",
 		},
-		{ href: "/tin-tuc", label: "Tin tức", active: pathname === "/tin-tuc" },
+		{
+			href: "/tin-tuc",
+			label: "Tin tức",
+			active:
+				pathname === "/tin-tuc" || pathname.startsWith("/tin-tuc/"),
+		},
 	];
 
 	return (

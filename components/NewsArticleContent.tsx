@@ -10,7 +10,7 @@ import {
 	type TableOfContentData,
 } from "@tiptap/extension-table-of-contents";
 import { HeadingWithTocId } from "@/lib/tiptap-heading";
-import { createHeadingId } from "@/lib/news-toc";
+import { createHeadingId, demoteArticleH1 } from "@/lib/news-toc";
 
 export default function NewsArticleContent({
 	html,
@@ -19,6 +19,7 @@ export default function NewsArticleContent({
 	html: string;
 	onTocUpdate: (items: TableOfContentData) => void;
 }) {
+	const htmlToRender = demoteArticleH1(html);
 	const onTocUpdateRef = useRef(onTocUpdate);
 	onTocUpdateRef.current = onTocUpdate;
 
@@ -43,20 +44,25 @@ export default function NewsArticleContent({
 				},
 			}),
 		],
-		content: html,
+		content: htmlToRender,
 	});
 
 	useEffect(() => {
 		if (!editor) return;
-		editor.commands.setContent(html || "");
-	}, [editor, html]);
+		editor.commands.setContent(htmlToRender || "");
+	}, [editor, htmlToRender]);
 
 	useEffect(() => {
 		return () => onTocUpdateRef.current([]);
 	}, []);
 
 	if (!editor) {
-		return <p style={{ color: "var(--muted)" }}>Đang tải nội dung...</p>;
+		return (
+			<div
+				className="news-content"
+				dangerouslySetInnerHTML={{ __html: htmlToRender }}
+			/>
+		);
 	}
 
 	return <EditorContent editor={editor} className="news-content" />;

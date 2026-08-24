@@ -1,16 +1,27 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import ProductCatalog from "@/components/ProductCatalog";
+import { fetchProductFilters, fetchProducts } from "@/api/services/products-server";
+import { JsonLdScript } from "@/lib/seo/json-ld-script";
+import { seoToMetadata } from "@/lib/seo/metadata";
+import { resolveProductsSeo } from "@/lib/seo/resolvers";
+import { PRODUCT_PAGE_SIZE } from "@/lib/pagination";
 
-export const metadata: Metadata = {
-	title: "Sản phẩm — Danh mục ưu tiên",
-	description:
-		"Danh mục ưu tiên giai đoạn đầu của TDL: phụ kiện & linh kiện điện thoại; điện gia dụng đang chuẩn bị.",
-};
+export const revalidate = 60;
 
-export default function SanPhamPage() {
+const seo = resolveProductsSeo();
+
+export const metadata: Metadata = seoToMetadata(seo);
+
+export default async function SanPhamPage() {
+	const [products, filters] = await Promise.all([
+		fetchProducts({ page: 1, limit: PRODUCT_PAGE_SIZE }),
+		fetchProductFilters(),
+	]);
+
 	return (
 		<>
+			<JsonLdScript seo={seo} />
 			<section className="pagehero">
 				<div className="wrap">
 					<div className="crumb">TDL / Sản phẩm</div>
@@ -28,7 +39,10 @@ export default function SanPhamPage() {
 			</section>
 
 			<section className="section">
-				<ProductCatalog />
+				<ProductCatalog
+					initialProducts={products}
+					initialFilters={filters}
+				/>
 			</section>
 
 			<section className="section alt">

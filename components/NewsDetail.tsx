@@ -3,9 +3,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { useParams } from "next/navigation";
 import type { TableOfContentData } from "@tiptap/extension-table-of-contents";
-import { useGetNewsBySlug } from "@/api/queries/news";
+import type { ApiResponse } from "@/types";
+import type { NewsArticle } from "@/types/news";
 import NewsArticleContent from "@/components/NewsArticleContent";
 import NewsLatestSidebar from "@/components/NewsLatestSidebar";
 import NewsTableOfContents from "@/components/NewsTableOfContents";
@@ -24,61 +24,15 @@ function formatNewsDate(value?: string | null) {
 	});
 }
 
-export default function NewsDetail() {
-	const params = useParams<{ slug: string }>();
-	const slug = decodeURIComponent(params.slug ?? "");
-	const { data, isLoading, isError } = useGetNewsBySlug(slug);
-	const article = data?.data;
-	const image =
-		article?.thumbnail_url || article?.thumbnail || FALLBACK_IMAGE;
+export default function NewsDetail({
+	article,
+	initialLatest,
+}: {
+	article: NewsArticle;
+	initialLatest?: ApiResponse<NewsArticle[]>;
+}) {
+	const image = article.thumbnail_url || article.thumbnail || FALLBACK_IMAGE;
 	const [tocItems, setTocItems] = useState<TableOfContentData>([]);
-
-	if (isLoading) {
-		return (
-			<>
-				<section className="pagehero">
-					<div className="wrap">
-						<div className="crumb">
-							<Link href="/tin-tuc">TDL / Tin tức</Link>
-						</div>
-					</div>
-				</section>
-				<section className="section">
-					<div className="wrap news-detail-wrap">
-						<p style={{ color: "var(--muted)" }}>
-							Đang tải bài viết...
-						</p>
-					</div>
-				</section>
-			</>
-		);
-	}
-
-	if (isError || !article) {
-		return (
-			<>
-				<section className="pagehero">
-					<div className="wrap">
-						<div className="crumb">
-							<Link href="/tin-tuc">TDL / Tin tức</Link>
-						</div>
-					</div>
-				</section>
-				<section className="section">
-					<div className="wrap news-detail-wrap">
-						<div className="news-empty show">
-							Không tìm thấy bài viết.
-							<div style={{ marginTop: 16 }}>
-								<Link className="btn dark" href="/tin-tuc">
-									Quay lại tin tức
-								</Link>
-							</div>
-						</div>
-					</div>
-				</section>
-			</>
-		);
-	}
 
 	return (
 		<>
@@ -92,7 +46,9 @@ export default function NewsDetail() {
 			</section>
 			<section className="section">
 				<div className="wrap">
-					<div className={`news-detail-wrap${tocItems.length ? " has-toc" : ""}`}>
+					<div
+						className={`news-detail-wrap${tocItems.length ? " has-toc" : ""}`}
+					>
 						<NewsTableOfContents items={tocItems} />
 						<article className="news-detail">
 							<div className="meta">
@@ -120,6 +76,7 @@ export default function NewsDetail() {
 									alt={article.title}
 									width={1200}
 									height={675}
+									priority
 									unoptimized={Boolean(
 										image.startsWith("http"),
 									)}
@@ -144,7 +101,10 @@ export default function NewsDetail() {
 								</p>
 							)}
 						</article>
-						<NewsLatestSidebar excludeId={article.id} />
+						<NewsLatestSidebar
+							excludeId={article.id}
+							initialArticles={initialLatest}
+						/>
 					</div>
 					<div className="cta" style={{ marginTop: 42 }}>
 						<div>

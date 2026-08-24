@@ -23,6 +23,22 @@ html {
 	scroll-behavior: smooth;
 }
 
+.skip-link {
+	position: absolute;
+	left: 12px;
+	top: -120px;
+	z-index: 200;
+	padding: 10px 16px;
+	border-radius: 8px;
+	background: var(--navy);
+	color: #fff;
+	font-weight: 600;
+}
+
+.skip-link:focus {
+	top: 12px;
+}
+
 body {
 	margin: 0;
 	font-family:
@@ -709,7 +725,8 @@ h2 {
 	color: rgba(255, 255, 255, 0.05);
 }
 
-.pagehero h1 {
+.pagehero h1,
+.pagehero .pagehero-title {
 	font-size: clamp(30px, 4.5vw, 48px);
 	line-height: 1.15;
 	margin: 14px 0 16px;

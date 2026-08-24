@@ -7,6 +7,7 @@ services:
       args:
         NEXT_PUBLIC_API_URL: /api
         API_URL: ${API_URL}
+        NEXT_PUBLIC_SITE_URL: ${SITE_URL}
     ports:
       - "${PORT:-3000}:3000"
     environment:
@@ -15,6 +16,7 @@ services:
       PORT: 3000
       HOSTNAME: 0.0.0.0
       API_URL: ${API_URL}
+      SITE_URL: ${SITE_URL}
     restart: unless-stopped
     healthcheck:
       test:

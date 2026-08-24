@@ -4,10 +4,16 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { useGetProductFilters, useGetProducts } from "@/api/queries/products";
-import type { WebsiteProductParams } from "@/types/products";
+import type { ApiResponse } from "@/types";
+import type {
+	Product,
+	ProductFilters,
+	WebsiteProductParams,
+} from "@/types/products";
+import { PRODUCT_PAGE_SIZE } from "@/lib/pagination";
 
 const FALLBACK_IMAGE = "/tin-phu-kien.png";
-const PAGE_SIZE = 12;
+const PAGE_SIZE = PRODUCT_PAGE_SIZE;
 
 function getPageItems(
 	current: number,
@@ -53,7 +59,15 @@ function formatVnd(price: string | number | null | undefined): string | null {
 	}).format(value);
 }
 
-export default function ProductCatalog() {
+type ProductCatalogProps = {
+	initialProducts?: ApiResponse<Product[]>;
+	initialFilters?: ApiResponse<ProductFilters>;
+};
+
+export default function ProductCatalog({
+	initialProducts,
+	initialFilters,
+}: ProductCatalogProps) {
 	const [searchInput, setSearchInput] = useState("");
 	const [debouncedSearch, setDebouncedSearch] = useState("");
 	const [categoryId, setCategoryId] = useState<number | undefined>();
@@ -78,12 +92,20 @@ export default function ProductCatalog() {
 	}, [debouncedSearch, categoryId, productGroupId, page]);
 
 	const { data: filtersRes, isLoading: filtersLoading } =
-		useGetProductFilters();
+		useGetProductFilters(initialFilters);
 	const {
 		data: productsRes,
 		isLoading: productsLoading,
 		isError,
-	} = useGetProducts(queryParams);
+	} = useGetProducts(
+		queryParams,
+		page === 1 &&
+			!debouncedSearch &&
+			!categoryId &&
+			!productGroupId
+			? initialProducts
+			: undefined,
+	);
 
 	const categories = filtersRes?.data?.categories ?? [];
 	const productGroups = filtersRes?.data?.product_groups ?? [];

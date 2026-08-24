@@ -1,15 +1,30 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import NewsGrid from "@/components/NewsGrid";
+import {
+	fetchNewsArticles,
+	fetchNewsCategories,
+} from "@/api/services/news-server";
+import { JsonLdScript } from "@/lib/seo/json-ld-script";
+import { seoToMetadata } from "@/lib/seo/metadata";
+import { resolveNewsListSeo } from "@/lib/seo/resolvers";
+import { NEWS_PAGE_SIZE } from "@/lib/pagination";
 
-export const metadata: Metadata = {
-	title: "Tin tức",
-	description: "Tin tức và cập nhật từ hệ sinh thái TDL — Thiên Đăng Lê.",
-};
+export const revalidate = 60;
 
-export default function TinTucPage() {
+const seo = resolveNewsListSeo();
+
+export const metadata: Metadata = seoToMetadata(seo);
+
+export default async function TinTucPage() {
+	const [articles, categories] = await Promise.all([
+		fetchNewsArticles({ page: 1, limit: NEWS_PAGE_SIZE }),
+		fetchNewsCategories(),
+	]);
+
 	return (
 		<>
+			<JsonLdScript seo={seo} />
 			<section className="pagehero">
 				<div className="wrap">
 					<div className="crumb">TDL / Tin tức</div>
@@ -32,7 +47,10 @@ export default function TinTucPage() {
 							Nội dung ưu tiên tính kiểm chứng, gắn với năng lực vận hành và danh mục sản phẩm thực tế.
 						</p>
 					</div>
-					<NewsGrid />
+					<NewsGrid
+						initialArticles={articles}
+						initialCategories={categories}
+					/>
 					<div className="cta" style={{ marginTop: 42 }}>
 						<div>
 							<div className="kicker">Theo dõi cập nhật</div>

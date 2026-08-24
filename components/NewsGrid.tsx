@@ -4,10 +4,12 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useGetNews, useGetNewsCategories } from "@/api/queries/news";
-import type { NewsCategory } from "@/types/news";
+import type { ApiResponse } from "@/types";
+import type { NewsArticle, NewsCategory } from "@/types/news";
+import { NEWS_PAGE_SIZE } from "@/lib/pagination";
 
 const FALLBACK_IMAGE = "/tin-phu-kien.png";
-const PAGE_SIZE = 9;
+const PAGE_SIZE = NEWS_PAGE_SIZE;
 
 function flattenCategories(categories: NewsCategory[]): NewsCategory[] {
 	return categories.flatMap((category) => [
@@ -35,11 +37,19 @@ function articleHref(slug: string, externalUrl?: string | null) {
 	return `/tin-tuc/${slug}`;
 }
 
-export default function NewsGrid() {
+type NewsGridProps = {
+	initialArticles?: ApiResponse<NewsArticle[]>;
+	initialCategories?: ApiResponse<NewsCategory[]>;
+};
+
+export default function NewsGrid({
+	initialArticles,
+	initialCategories,
+}: NewsGridProps) {
 	const [activeCat, setActiveCat] = useState<number | "all">("all");
 	const [page, setPage] = useState(1);
 
-	const { data: categoriesRes } = useGetNewsCategories();
+	const { data: categoriesRes } = useGetNewsCategories(initialCategories);
 	const categories = useMemo(
 		() => flattenCategories(categoriesRes?.data ?? []),
 		[categoriesRes?.data],
@@ -54,7 +64,10 @@ export default function NewsGrid() {
 		[activeCat, page],
 	);
 
-	const { data: newsRes, isLoading, isError } = useGetNews(queryParams);
+	const { data: newsRes, isLoading, isError } = useGetNews(
+		queryParams,
+		page === 1 && activeCat === "all" ? initialArticles : undefined,
+	);
 	const articles = newsRes?.data ?? [];
 	const pagination = newsRes?.pagination ?? newsRes?.meta;
 	const lastPage = Math.max(1, pagination?.last_page ?? 1);

@@ -3,6 +3,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useGetLatestNews } from "@/api/queries/news";
+import type { ApiResponse } from "@/types";
+import type { NewsArticle } from "@/types/news";
 
 const FALLBACK_IMAGE = "/tin-phu-kien.png";
 
@@ -20,16 +22,21 @@ function formatNewsDate(value?: string | null) {
 
 export default function NewsLatestSidebar({
 	excludeId,
+	initialArticles,
 }: {
 	excludeId?: number;
+	initialArticles?: ApiResponse<NewsArticle[]>;
 }) {
-	const { data, isLoading } = useGetLatestNews({
-		limit: 5,
-		exclude_id: excludeId,
-	});
+	const { data } = useGetLatestNews(
+		{
+			limit: 5,
+			exclude_id: excludeId,
+		},
+		initialArticles,
+	);
 	const articles = data?.data ?? [];
 
-	if (isLoading || articles.length === 0) return null;
+	if (articles.length === 0) return null;
 
 	return (
 		<aside className="news-latest" aria-label="Bài viết mới nhất">

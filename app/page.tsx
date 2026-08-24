@@ -2,11 +2,15 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import ContactForm from "@/components/ContactForm";
-import HomepageProductGrid from "@/components/HomepageProductGrid";
+import { JsonLdScript } from "@/lib/seo/json-ld-script";
+import { resolveLandingSeo } from "@/lib/seo/resolvers";
 
 export default function Home() {
+	const seo = resolveLandingSeo();
+
 	return (
 		<>
+			<JsonLdScript seo={seo} />
 			<div className="page-section" id="trang-chu">
 				<section className="hero">
 					<div className="wrap hero-grid">
@@ -288,10 +292,10 @@ export default function Home() {
 				<section className="pagehero">
 					<div className="wrap">
 						<div className="crumb">TDL / Giới thiệu</div>
-						<h1>
+						<h2 className="pagehero-title">
 							Một doanh nghiệp thực chiến, được xây dựng cho giá
 							trị dài hạn.
-						</h1>
+						</h2>
 						<p>
 							TDL được hình thành từ kinh nghiệm nhiều năm trong
 							lĩnh vực kinh doanh sỉ tại Tây Nguyên, cùng nhu cầu
@@ -394,10 +398,10 @@ export default function Home() {
 				<section className="pagehero">
 					<div className="wrap">
 						<div className="crumb">TDL / Liên hệ</div>
-						<h1>
+						<h2 className="pagehero-title">
 							Khởi đầu một cuộc trao đổi minh bạch và hướng đến
 							giá trị thực.
-						</h1>
+						</h2>
 						<p>
 							TDL trân trọng cơ hội hợp tác với khách hàng, đại
 							lý, nhà cung cấp, đối tác công nghệ và các cộng sự
