@@ -5,20 +5,9 @@ import Link from "next/link";
 import { useGetLatestNews } from "@/api/queries/news";
 import type { ApiResponse } from "@/types";
 import type { NewsArticle } from "@/types/news";
+import { formatNewsDate } from "@/lib/format-news-date";
 
 const FALLBACK_IMAGE = "/tin-phu-kien.png";
-
-function formatNewsDate(value?: string | null) {
-	if (!value) return "";
-	const date = new Date(value);
-	if (Number.isNaN(date.getTime())) return value;
-
-	return date.toLocaleDateString("vi-VN", {
-		day: "2-digit",
-		month: "2-digit",
-		year: "numeric",
-	});
-}
 
 export default function NewsLatestSidebar({
 	excludeId,

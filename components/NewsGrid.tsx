@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { useGetNews, useGetNewsCategories } from "@/api/queries/news";
 import type { ApiResponse } from "@/types";
 import type { NewsArticle, NewsCategory } from "@/types/news";
+import { formatNewsDate } from "@/lib/format-news-date";
 import { NEWS_PAGE_SIZE } from "@/lib/pagination";
 
 const FALLBACK_IMAGE = "/tin-phu-kien.png";
@@ -16,20 +17,6 @@ function flattenCategories(categories: NewsCategory[]): NewsCategory[] {
 		category,
 		...flattenCategories(category.children ?? []),
 	]);
-}
-
-function formatNewsDate(value?: string | null) {
-	if (!value) return "";
-	const date = new Date(value);
-	if (Number.isNaN(date.getTime())) return value;
-
-	return date
-		.toLocaleDateString("vi-VN", {
-			day: "2-digit",
-			month: "2-digit",
-			year: "numeric",
-		})
-		.replace(/\//g, " / ");
 }
 
 function articleHref(slug: string, externalUrl?: string | null) {
@@ -133,7 +120,7 @@ export default function NewsGrid({
 							<div className="body">
 								<div className="meta">
 									{article.published_at && (
-										<span>{formatNewsDate(article.published_at)}</span>
+										<span>{formatNewsDate(article.published_at, " / ")}</span>
 									)}
 									{article.category?.name && (
 										<>

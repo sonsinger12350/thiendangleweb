@@ -10,21 +10,10 @@ import NewsArticleContent from "@/components/NewsArticleContent";
 import NewsLatestSidebar from "@/components/NewsLatestSidebar";
 import NewsTableOfContents from "@/components/NewsTableOfContents";
 import { PageBreadcrumb } from "@/components/page-breadcrumb";
+import { formatNewsDate } from "@/lib/format-news-date";
 import { articleBreadcrumbs } from "@/lib/seo/breadcrumbs";
 
 const FALLBACK_IMAGE = "/tin-phu-kien.png";
-
-function formatNewsDate(value?: string | null) {
-	if (!value) return "";
-	const date = new Date(value);
-	if (Number.isNaN(date.getTime())) return value;
-
-	return date.toLocaleDateString("vi-VN", {
-		day: "2-digit",
-		month: "2-digit",
-		year: "numeric",
-	});
-}
 
 export default function NewsDetail({
 	article,
@@ -39,14 +28,14 @@ export default function NewsDetail({
 	return (
 		<>
 			<section className="pagehero">
-				<div className="wrap">
+				<div className="wrap wrap-article">
 					<PageBreadcrumb
 						items={articleBreadcrumbs(article.title, article.slug)}
 					/>
 				</div>
 			</section>
 			<section className="section">
-				<div className="wrap">
+				<div className="wrap wrap-article">
 					<div
 						className={`news-detail-wrap${tocItems.length ? " has-toc" : ""}`}
 					>
