@@ -38,7 +38,7 @@ export function buildJsonLd(seo: SeoPayload): {
     url: origin,
     logo: {
       "@type": "ImageObject",
-      url: seo.publisherLogo ?? `${origin}/logo/Logo_symbol.png`,
+      url: seo.publisherLogo ?? `${origin}/logo/Logo_symbol.webp`,
     },
     email: "info@thiendangle.com",
   };

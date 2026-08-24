@@ -956,9 +956,12 @@ h2 {
 	gap: 38px;
 }
 
-.footer h4 {
+.footer h2 {
 	color: white;
 	margin-top: 0;
+	font-family: inherit;
+	font-size: 1em;
+	font-weight: 700;
 }
 
 .footer a {

@@ -54,7 +54,7 @@ export default function Home() {
 							</div>
 							<div className="logo-orbit">
 								<Image
-									src="/logo/Logo_symbol.png"
+									src="/logo/Logo_symbol.webp"
 									alt="Biểu tượng TDL"
 									width={390}
 									height={390}
@@ -89,7 +89,7 @@ export default function Home() {
 						<div className="orbit">
 							<div className="orbit-center">
 								<Image
-									src="/logo/Logo_symbol.png"
+									src="/logo/Logo_symbol.webp"
 									alt="TDL"
 									width={158}
 									height={158}

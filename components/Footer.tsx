@@ -9,7 +9,7 @@ export default function Footer() {
 					<div>
 						<Link className="brand" href="/#trang-chu">
 							<Image
-								src="/logo/Logo_symbol.png"
+								src="/logo/Logo_symbol.webp"
 								alt="Logo TDL"
 								width={54}
 								height={54}
@@ -22,13 +22,13 @@ export default function Footer() {
 						<p>Hệ sinh thái công nghệ – thương mại – vận hành đa ngành.</p>
 					</div>
 					<div>
-						<h4>Khám phá</h4>
+						<h2>Khám phá</h2>
 						<Link href="/#gioi-thieu">Giới thiệu</Link>
 						<Link href="/san-pham">Sản phẩm</Link>
 						<Link href="/tin-tuc">Tin tức</Link>
 					</div>
 					<div>
-						<h4>Phân hệ</h4>
+						<h2>Phân hệ</h2>
 						<Link href="/#trang-chu">Hồng Đức</Link>
 						<Link href="/#trang-chu">Hưng &amp; Thịnh</Link>
 						<Link href="/#trang-chu">Tâm An Việt</Link>
@@ -37,7 +37,7 @@ export default function Footer() {
 						<Link href="/#trang-chu">Ánh Nhật</Link>
 					</div>
 					<div>
-						<h4>Liên hệ</h4>
+						<h2>Liên hệ</h2>
 						<a href="mailto:info@thiendangle.com">
 							info@thiendangle.com
 						</a>

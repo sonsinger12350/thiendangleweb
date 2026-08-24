@@ -27,7 +27,7 @@ function withDefaults(
     siteName: SITE_NAME,
     htmlLang: "vi",
     ogLocale: "vi_VN",
-    publisherLogo: resolveAbsoluteUrl("/logo/Logo_symbol.png"),
+    publisherLogo: resolveAbsoluteUrl("/logo/Logo_symbol.webp"),
     ...partial,
     ogImage: partial.ogImage ?? resolveAbsoluteUrl(DEFAULT_OG_IMAGE_PATH),
     ogImageWidth: partial.ogImageWidth ?? DEFAULT_OG_IMAGE_WIDTH,
