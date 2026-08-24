@@ -2265,6 +2265,42 @@ html {
 	border-radius: 16px;
 }
 
+.news-content .tableWrapper {
+	overflow-x: auto;
+	margin: 0 0 16px;
+}
+
+.news-content table {
+	width: 100%;
+	border-collapse: collapse;
+	border: 1px solid var(--line);
+	font-size: 15px;
+}
+
+.news-content th,
+.news-content td {
+	border: 1px solid var(--line);
+	padding: 10px 12px;
+	text-align: left;
+	vertical-align: top;
+}
+
+.news-content th {
+	background: var(--ivory);
+	color: var(--navy);
+	font-weight: 600;
+}
+
+.news-content th p,
+.news-content td p {
+	margin: 0;
+}
+
+.news-content th p + p,
+.news-content td p + p {
+	margin-top: 8px;
+}
+
 .news-content p,
 .news-content ul,
 .news-content ol {

@@ -4,12 +4,14 @@ import { useEffect, useRef } from "react";
 import { EditorContent, useEditor } from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import Image from "@tiptap/extension-image";
+import { TableKit } from "@tiptap/extension-table";
 import {
 	TableOfContents,
 	getHierarchicalIndexes,
 	type TableOfContentData,
 } from "@tiptap/extension-table-of-contents";
 import { HeadingWithTocId } from "@/lib/tiptap-heading";
+import { TableCellWithStyle, TableHeaderWithStyle } from "@/lib/tiptap-table";
 import { createHeadingId, demoteArticleH1 } from "@/lib/news-toc";
 
 export default function NewsArticleContent({
@@ -34,6 +36,16 @@ export default function NewsArticleContent({
 			Image.configure({
 				inline: false,
 			}),
+			TableKit.configure({
+				table: {
+					resizable: false,
+					renderWrapper: true,
+				},
+				tableCell: false,
+				tableHeader: false,
+			}),
+			TableCellWithStyle,
+			TableHeaderWithStyle,
 			TableOfContents.configure({
 				anchorTypes: ["heading"],
 				getIndex: getHierarchicalIndexes,
