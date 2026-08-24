@@ -2,9 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { useParams } from "next/navigation";
+import type { TableOfContentData } from "@tiptap/extension-table-of-contents";
 import { useGetNewsBySlug } from "@/api/queries/news";
+import NewsArticleContent from "@/components/NewsArticleContent";
 import NewsLatestSidebar from "@/components/NewsLatestSidebar";
+import NewsTableOfContents from "@/components/NewsTableOfContents";
 
 const FALLBACK_IMAGE = "/tin-phu-kien.png";
 
@@ -27,6 +31,7 @@ export default function NewsDetail() {
 	const article = data?.data;
 	const image =
 		article?.thumbnail_url || article?.thumbnail || FALLBACK_IMAGE;
+	const [tocItems, setTocItems] = useState<TableOfContentData>([]);
 
 	if (isLoading) {
 		return (
@@ -40,7 +45,9 @@ export default function NewsDetail() {
 				</section>
 				<section className="section">
 					<div className="wrap news-detail-wrap">
-						<p style={{ color: "var(--muted)" }}>Đang tải bài viết...</p>
+						<p style={{ color: "var(--muted)" }}>
+							Đang tải bài viết...
+						</p>
 					</div>
 				</section>
 			</>
@@ -85,11 +92,14 @@ export default function NewsDetail() {
 			</section>
 			<section className="section">
 				<div className="wrap">
-					<div className="news-detail-wrap">
+					<div className={`news-detail-wrap${tocItems.length ? " has-toc" : ""}`}>
+						<NewsTableOfContents items={tocItems} />
 						<article className="news-detail">
 							<div className="meta">
 								{article.published_at && (
-									<span>{formatNewsDate(article.published_at)}</span>
+									<span>
+										{formatNewsDate(article.published_at)}
+									</span>
 								)}
 								{article.category?.name && (
 									<>
@@ -98,21 +108,27 @@ export default function NewsDetail() {
 									</>
 								)}
 							</div>
-							<h1 className="text-4xl font-bold">{article.title}</h1>
-							{article.excerpt && <p className="lead">{article.excerpt}</p>}
+							<h1 className="text-4xl font-bold">
+								{article.title}
+							</h1>
+							{article.excerpt && (
+								<p className="lead">{article.excerpt}</p>
+							)}
 							<div className="thumb">
 								<Image
 									src={image}
 									alt={article.title}
 									width={1200}
 									height={675}
-									unoptimized={Boolean(image.startsWith("http"))}
+									unoptimized={Boolean(
+										image.startsWith("http"),
+									)}
 								/>
 							</div>
 							{article.content && (
-								<div
-									className="news-content"
-									dangerouslySetInnerHTML={{ __html: article.content }}
+								<NewsArticleContent
+									html={article.content}
+									onTocUpdate={setTocItems}
 								/>
 							)}
 							{article.external_url && (
@@ -133,7 +149,10 @@ export default function NewsDetail() {
 					<div className="cta" style={{ marginTop: 42 }}>
 						<div>
 							<div className="kicker">Theo dõi cập nhật</div>
-							<h2>Nhận thông tin danh mục và hợp tác phân phối từ TDL.</h2>
+							<h2>
+								Nhận thông tin danh mục và hợp tác phân phối từ
+								TDL.
+							</h2>
 						</div>
 						<Link className="btn dark" href="/#lien-he">
 							Liên hệ ngay

@@ -1412,7 +1412,7 @@ html {
 	background: white;
 	box-shadow: 0 12px 36px rgba(11, 29, 58, 0.06);
 	height: 85vh;
-    overflow-y: scroll;
+	overflow-y: scroll;
 }
 
 .filters h3,
@@ -2006,6 +2006,73 @@ html {
 	max-width: 1220px;
 }
 
+.news-detail-wrap.has-toc {
+	grid-template-columns: 240px minmax(0, 1fr) 320px;
+}
+
+.news-toc {
+	position: sticky;
+	top: 98px;
+	padding: 22px;
+	border: 1px solid var(--line);
+	border-radius: 24px;
+	background: white;
+	box-shadow: 0 12px 36px rgba(11, 29, 58, 0.06);
+}
+
+.news-toc h2 {
+	margin: 0 0 14px;
+	font-size: 18px;
+	color: var(--navy);
+}
+
+.news-toc ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 2px;
+}
+
+.news-toc a {
+	display: block;
+	padding: 8px 10px;
+	border-radius: 12px;
+	color: var(--muted);
+	text-decoration: none;
+	font-size: 13.5px;
+	font-weight: 700;
+	line-height: 1.4;
+}
+
+.news-toc a:hover {
+	background: var(--ivory);
+	color: var(--navy);
+}
+
+.news-toc .active a,
+.news-toc .scrolled.active a {
+	background: rgba(212, 160, 23, 0.14);
+	color: var(--navy);
+}
+
+.news-toc .level-2 a {
+	padding-left: 10px;
+}
+
+.news-toc .level-3 a {
+	padding-left: 22px;
+	font-weight: 650;
+}
+
+.news-toc .level-4 a,
+.news-toc .level-5 a,
+.news-toc .level-6 a {
+	padding-left: 34px;
+	font-size: 13px;
+	font-weight: 600;
+}
+
 .news-latest {
 	position: sticky;
 	top: 98px;
@@ -2118,6 +2185,41 @@ html {
 	font-size: 16px;
 }
 
+.news-content .tiptap {
+	outline: none;
+}
+
+.news-content .tiptap h1,
+.news-content .tiptap h2,
+.news-content .tiptap h3,
+.news-content .tiptap h4,
+.news-content .tiptap h5,
+.news-content .tiptap h6 {
+	scroll-margin-top: 110px;
+	color: var(--navy);
+}
+
+.news-content .tiptap h2 {
+	margin: 28px 0 12px;
+	font-size: 26px;
+}
+
+.news-content .tiptap h3 {
+	margin: 22px 0 10px;
+	font-size: 20px;
+}
+
+.news-content .tiptap h4 {
+	margin: 18px 0 8px;
+	font-size: 17px;
+}
+
+.news-content .tiptap img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 16px;
+}
+
 .news-content p,
 .news-content ul,
 .news-content ol {
@@ -2144,7 +2246,8 @@ html {
 		grid-template-columns: 1fr;
 	}
 
-	.news-latest {
+	.news-latest,
+	.news-toc {
 		position: static;
 	}
 
