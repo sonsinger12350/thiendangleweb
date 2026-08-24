@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Suspense } from "react";
 import ContactForm from "@/components/ContactForm";
+import HomepageProductGrid from "@/components/HomepageProductGrid";
 import { JsonLdScript } from "@/lib/seo/json-ld-script";
 import { resolveLandingSeo } from "@/lib/seo/resolvers";
 
@@ -180,105 +181,7 @@ export default function Home() {
 								rõ ràng.
 							</p>
 						</div>
-						{/* <HomepageProductGrid /> */}
-						<div className="product-grid">
-							<article className="product-card">
-								<div className="thumb">
-									<Image
-										src="/cuong-luc-iphone.png"
-										alt="Cường lực điện thoại"
-										width={600}
-										height={450}
-									/>
-								</div>
-								<div className="body">
-									<span className="tag">Bảo vệ màn hình</span>
-									<h3>Cường lực điện thoại</h3>
-									<p>
-										Kính cường lực các dòng điện thoại phổ
-										biến — độ trong cao, viền ôm sát, chống
-										xước và dễ lắp đặt.
-									</p>
-									<div className="product-meta">
-										<span>điện thoại</span>
-										<span>Bán sỉ</span>
-										<span>Luân chuyển nhanh</span>
-									</div>
-								</div>
-							</article>
-							<article className="product-card">
-								<div className="thumb">
-									<Image
-										src="/bo-sac-iphone.png"
-										alt="Bộ sạc điện thoại"
-										width={600}
-										height={450}
-									/>
-								</div>
-								<div className="body">
-									<span className="tag">Sạc &amp; cáp</span>
-									<h3>Bộ sạc điện thoại</h3>
-									<p>
-										Củ sạc, cáp và bộ sạc đồng bộ. Ưu tiên
-										hàng ổn định nguồn, đóng gói gọn, dễ đối
-										soát tồn kho.
-									</p>
-									<div className="product-meta">
-										<span>USB-C / Lightning</span>
-										<span>Đại lý</span>
-										<span>Bảo hành rõ</span>
-									</div>
-								</div>
-							</article>
-							<article className="product-card">
-								<div className="thumb">
-									<Image
-										src="/pin-iphone.png"
-										alt="Pin điện thoại"
-										width={600}
-										height={450}
-									/>
-								</div>
-								<div className="body">
-									<span className="tag">Linh kiện</span>
-									<h3>Pin điện thoại</h3>
-									<p>
-										Pin thay thế theo từng đời máy. Tập
-										trung hàng có nguồn gốc rõ và quy trình
-										bảo hành phù hợp cửa hàng sửa chữa.
-									</p>
-									<div className="product-meta">
-										<span>Thay thế</span>
-										<span>Sửa chữa</span>
-										<span>Đối soát mã</span>
-									</div>
-								</div>
-							</article>
-							<article className="product-card">
-								<div className="thumb">
-									<Image
-										src="/man-hinh-iphone.png"
-										alt="Màn hình điện thoại"
-										width={600}
-										height={450}
-									/>
-								</div>
-								<div className="body">
-									<span className="tag">Linh kiện</span>
-									<h3>Màn hình điện thoại</h3>
-									<p>
-										Màn hình thay thế phân nhóm theo chất
-										lượng hiển thị, kèm chính sách đổi trả
-										minh bạch cho đại lý.
-									</p>
-									<div className="product-meta">
-										<span>OLED / LCD</span>
-										<span>B2B</span>
-										<span>Hỗ trợ kỹ thuật</span>
-									</div>
-								</div>
-							</article>
-						</div>
+						<HomepageProductGrid />
 						<div style={{ marginTop: 28, textAlign: "center" }}>
 							<Link className="btn dark" href="/san-pham">
 								Xem tất cả sản phẩm
