@@ -9,6 +9,7 @@ import { JsonLdScript } from "@/lib/seo/json-ld-script";
 import { seoToMetadata } from "@/lib/seo/metadata";
 import { resolveNewsListSeo } from "@/lib/seo/resolvers";
 import { NEWS_PAGE_SIZE } from "@/lib/pagination";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 export const revalidate = 60;
 
@@ -27,7 +28,7 @@ export default async function TinTucPage() {
 			<JsonLdScript seo={seo} />
 			<section className="pagehero">
 				<div className="wrap">
-					<div className="crumb">TDL / Tin tức</div>
+					<PageBreadcrumb items={seo.breadcrumbs ?? []} />
 					<h1>Tin tức &amp; cập nhật từ hệ sinh thái TDL.</h1>
 					<p>
 						Thông tin chính thức về danh mục ưu tiên giai đoạn đầu, chuẩn vận hành và định hướng phát triển

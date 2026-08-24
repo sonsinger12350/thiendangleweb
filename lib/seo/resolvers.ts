@@ -1,10 +1,20 @@
 import type { NewsArticle } from "@/types/news";
 import type { SeoPayload } from "./types";
 import {
+  articleBreadcrumbs,
+  homeBreadcrumb,
+  newsListBreadcrumb,
+  productsBreadcrumb,
+} from "./breadcrumbs";
+import {
   DEFAULT_DESCRIPTION,
   DEFAULT_KEYWORDS,
+  DEFAULT_OG_IMAGE_HEIGHT,
   DEFAULT_OG_IMAGE_PATH,
+  DEFAULT_OG_IMAGE_WIDTH,
   DEFAULT_TITLE,
+  OG_SHARE_IMAGE_HEIGHT,
+  OG_SHARE_IMAGE_WIDTH,
   ROUTES,
   SITE_NAME,
 } from "./site";
@@ -20,6 +30,8 @@ function withDefaults(
     publisherLogo: resolveAbsoluteUrl("/logo/Logo_symbol.png"),
     ...partial,
     ogImage: partial.ogImage ?? resolveAbsoluteUrl(DEFAULT_OG_IMAGE_PATH),
+    ogImageWidth: partial.ogImageWidth ?? DEFAULT_OG_IMAGE_WIDTH,
+    ogImageHeight: partial.ogImageHeight ?? DEFAULT_OG_IMAGE_HEIGHT,
   };
 }
 
@@ -42,6 +54,7 @@ export function resolveProductsSeo(): SeoPayload {
     pageUrl: canonicalUrl(ROUTES.products),
     ogType: "website",
     schemaKind: "collection",
+    breadcrumbs: [homeBreadcrumb(), productsBreadcrumb()],
   });
 }
 
@@ -52,6 +65,7 @@ export function resolveNewsListSeo(): SeoPayload {
     pageUrl: canonicalUrl(ROUTES.news),
     ogType: "website",
     schemaKind: "collection",
+    breadcrumbs: [homeBreadcrumb(), newsListBreadcrumb()],
   });
 }
 
@@ -62,8 +76,9 @@ export function resolveArticleSeo(article: NewsArticle): SeoPayload {
     article.excerpt?.trim() ||
     article.description?.trim() ||
     DEFAULT_DESCRIPTION;
+  const customImage = article.thumbnail_url || article.thumbnail;
   const ogImage =
-    resolveAbsoluteUrl(article.thumbnail_url || article.thumbnail) ||
+    resolveAbsoluteUrl(customImage) ||
     resolveAbsoluteUrl(DEFAULT_OG_IMAGE_PATH);
 
   return withDefaults({
@@ -73,10 +88,13 @@ export function resolveArticleSeo(article: NewsArticle): SeoPayload {
     pageUrl: canonicalUrl(ROUTES.article(article.slug)),
     ogType: "article",
     ogImage,
+    ogImageWidth: customImage ? OG_SHARE_IMAGE_WIDTH : DEFAULT_OG_IMAGE_WIDTH,
+    ogImageHeight: customImage ? OG_SHARE_IMAGE_HEIGHT : DEFAULT_OG_IMAGE_HEIGHT,
     schemaKind: "article",
     articleAuthor: article.author?.trim() || SITE_NAME,
     articlePublishedTime: article.published_at ?? undefined,
     articleModifiedTime: article.updated_at ?? article.published_at ?? undefined,
+    breadcrumbs: articleBreadcrumbs(article.title, article.slug),
   });
 }
 

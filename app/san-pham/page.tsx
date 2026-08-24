@@ -6,6 +6,7 @@ import { JsonLdScript } from "@/lib/seo/json-ld-script";
 import { seoToMetadata } from "@/lib/seo/metadata";
 import { resolveProductsSeo } from "@/lib/seo/resolvers";
 import { PRODUCT_PAGE_SIZE } from "@/lib/pagination";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
 
 export const revalidate = 60;
 
@@ -24,16 +25,14 @@ export default async function SanPhamPage() {
 			<JsonLdScript seo={seo} />
 			<section className="pagehero">
 				<div className="wrap">
-					<div className="crumb">TDL / Sản phẩm</div>
+					<PageBreadcrumb items={seo.breadcrumbs ?? []} />
 					<h1>
 						Danh mục sản phẩm có thể lọc theo nhóm hàng và trạng
 						thái vận hành.
 					</h1>
 					<p>
 						Theo hồ sơ định hướng, TDL phát triển phụ kiện/linh kiện
-						điện thoại và điện gia dụng. Giai đoạn đầu ưu tiên các
-						mã hàng điện thoại có nhu cầu thật, luân chuyển nhanh và
-						dễ đối soát.
+						điện thoại và điện gia dụng.
 					</p>
 				</div>
 			</section>

@@ -1,5 +1,13 @@
 export type SchemaKind = "landing" | "article" | "collection" | "none";
 
+export interface SeoBreadcrumbItem {
+  name: string;
+  /** Absolute canonical URL for JSON-LD `item`. */
+  url: string;
+  /** Site path for the visible crumb, e.g. `/tin-tuc`. */
+  path: string;
+}
+
 export interface SeoPayload {
   title: string;
   description: string;
@@ -7,6 +15,8 @@ export interface SeoPayload {
   siteName: string;
   pageUrl: string;
   ogImage?: string;
+  ogImageWidth?: number;
+  ogImageHeight?: number;
   ogType?: "website" | "article";
   ogLocale?: string;
   htmlLang?: "vi" | "en";
@@ -16,4 +26,5 @@ export interface SeoPayload {
   articlePublishedTime?: string;
   articleModifiedTime?: string;
   publisherLogo?: string;
+  breadcrumbs?: SeoBreadcrumbItem[];
 }

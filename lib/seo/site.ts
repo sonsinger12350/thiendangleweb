@@ -10,6 +10,14 @@ export const DEFAULT_KEYWORDS =
 
 export const DEFAULT_OG_IMAGE_PATH = "/logo/Logo_horizontal.png";
 
+/** Pixel size of `DEFAULT_OG_IMAGE_PATH`. */
+export const DEFAULT_OG_IMAGE_WIDTH = 1509;
+export const DEFAULT_OG_IMAGE_HEIGHT = 199;
+
+/** Facebook / Open Graph recommended share size when CMS image dimensions are unknown. */
+export const OG_SHARE_IMAGE_WIDTH = 1200;
+export const OG_SHARE_IMAGE_HEIGHT = 630;
+
 export const SEO_REVALIDATE_SECONDS = 60;
 
 export const ROUTES = {

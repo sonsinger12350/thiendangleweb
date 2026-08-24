@@ -13,7 +13,16 @@ function parseRobots(robots?: string): Metadata["robots"] {
 }
 
 export function seoToMetadata(seo: SeoPayload): Metadata {
-  const images = seo.ogImage ? [{ url: seo.ogImage, alt: seo.title }] : undefined;
+  const images = seo.ogImage
+    ? [
+        {
+          url: seo.ogImage,
+          alt: seo.title,
+          width: seo.ogImageWidth,
+          height: seo.ogImageHeight,
+        },
+      ]
+    : undefined;
 
   return {
     title: seo.title,

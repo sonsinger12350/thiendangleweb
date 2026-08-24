@@ -1,7 +1,23 @@
-import type { SeoPayload } from "./types";
+import type { SeoBreadcrumbItem, SeoPayload } from "./types";
 import { getSiteOrigin } from "./site";
 
 type JsonLdNode = Record<string, unknown>;
+
+function buildBreadcrumbList(
+  pageUrl: string,
+  breadcrumbs: SeoBreadcrumbItem[],
+): JsonLdNode {
+  return {
+    "@type": "BreadcrumbList",
+    "@id": `${pageUrl}#breadcrumb`,
+    itemListElement: breadcrumbs.map((crumb, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      name: crumb.name,
+      item: crumb.url,
+    })),
+  };
+}
 
 export function buildJsonLd(seo: SeoPayload): {
   "@context": string;
@@ -54,6 +70,16 @@ export function buildJsonLd(seo: SeoPayload): {
   }
 
   if (seo.schemaKind === "article") {
+    const image =
+      seo.ogImage && seo.ogImageWidth && seo.ogImageHeight
+        ? {
+            "@type": "ImageObject",
+            url: seo.ogImage,
+            width: seo.ogImageWidth,
+            height: seo.ogImageHeight,
+          }
+        : seo.ogImage;
+
     const article: JsonLdNode = {
       "@type": "BlogPosting",
       "@id": `${seo.pageUrl}#article`,
@@ -69,7 +95,7 @@ export function buildJsonLd(seo: SeoPayload): {
       publisher: { "@id": organizationId },
     };
 
-    if (seo.ogImage) article.image = seo.ogImage;
+    if (image) article.image = image;
     if (seo.articlePublishedTime) article.datePublished = seo.articlePublishedTime;
     if (seo.articleModifiedTime || seo.articlePublishedTime) {
       article.dateModified =
@@ -77,6 +103,10 @@ export function buildJsonLd(seo: SeoPayload): {
     }
 
     graph.push(website, organization, article);
+  }
+
+  if (seo.breadcrumbs && seo.breadcrumbs.length >= 2) {
+    graph.push(buildBreadcrumbList(seo.pageUrl, seo.breadcrumbs));
   }
 
   return { "@context": "https://schema.org", "@graph": graph };

@@ -19,11 +19,7 @@ export default function Footer() {
 								<small>Kiến tạo trật tự an tâm</small>
 							</span>
 						</Link>
-						<p>
-							Hệ sinh thái công nghệ – thương mại – vận hành đa
-							ngành. Giai đoạn đầu ưu tiên phụ kiện điện thoại;
-							điện gia dụng đang chuẩn bị.
-						</p>
+						<p>Hệ sinh thái công nghệ – thương mại – vận hành đa ngành.</p>
 					</div>
 					<div>
 						<h4>Khám phá</h4>
@@ -49,15 +45,6 @@ export default function Footer() {
 							support@thiendangle.com
 						</a>
 						<p>thiendangle.com</p>
-						<p
-							style={{
-								marginTop: 10,
-								fontSize: 12,
-								opacity: 0.85,
-							}}
-						>
-							Thương hiệu TDL — pháp nhân đang hoàn tất đăng ký.
-						</p>
 					</div>
 				</div>
 				<div className="copy">© 2026 TDL — Thiên Đăng Lê.</div>

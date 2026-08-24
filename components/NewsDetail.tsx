@@ -9,6 +9,8 @@ import type { NewsArticle } from "@/types/news";
 import NewsArticleContent from "@/components/NewsArticleContent";
 import NewsLatestSidebar from "@/components/NewsLatestSidebar";
 import NewsTableOfContents from "@/components/NewsTableOfContents";
+import { PageBreadcrumb } from "@/components/page-breadcrumb";
+import { articleBreadcrumbs } from "@/lib/seo/breadcrumbs";
 
 const FALLBACK_IMAGE = "/tin-phu-kien.png";
 
@@ -38,10 +40,9 @@ export default function NewsDetail({
 		<>
 			<section className="pagehero">
 				<div className="wrap">
-					<div className="crumb">
-						<Link href="/tin-tuc">TDL / Tin tức</Link>
-						{article.title ? ` / ${article.title}` : ""}
-					</div>
+					<PageBreadcrumb
+						items={articleBreadcrumbs(article.title, article.slug)}
+					/>
 				</div>
 			</section>
 			<section className="section">
