@@ -6,14 +6,22 @@ FROM node:${NODE_VERSION} AS dependencies
 
 WORKDIR /app
 
-COPY package.json package-lock.json ./
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 
-RUN --mount=type=cache,target=/root/.npm \
-  npm ci --no-audit --no-fund
+RUN corepack enable && corepack prepare yarn@1.22.22 --activate
+
+COPY package.json yarn.lock ./
+
+RUN --mount=type=cache,target=/root/.cache/yarn \
+  yarn install --frozen-lockfile --non-interactive
 
 FROM node:${NODE_VERSION} AS builder
 
 WORKDIR /app
+
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+
+RUN corepack enable && corepack prepare yarn@1.22.22 --activate
 
 COPY --from=dependencies /app/node_modules ./node_modules
 COPY . .
@@ -28,7 +36,7 @@ ENV SITE_URL=${NEXT_PUBLIC_SITE_URL}
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
 
-RUN npm run build
+RUN yarn build
 
 FROM node:${NODE_VERSION} AS runner
 

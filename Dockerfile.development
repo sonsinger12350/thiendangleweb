@@ -8,14 +8,17 @@ ENV NODE_ENV=development
 ENV NEXT_TELEMETRY_DISABLED=1
 ENV HOSTNAME=0.0.0.0
 ENV PORT=3000
+ENV COREPACK_ENABLE_DOWNLOAD_PROMPT=0
 
-COPY package.json package-lock.json ./
+RUN corepack enable && corepack prepare yarn@1.22.22 --activate
 
-RUN --mount=type=cache,target=/root/.npm \
-  npm ci --no-audit --no-fund
+COPY package.json yarn.lock ./
+
+RUN --mount=type=cache,target=/root/.cache/yarn \
+  yarn install --frozen-lockfile --non-interactive
 
 COPY . .
 
 EXPOSE 3000
 
-CMD ["npm", "run", "dev"]
+CMD ["yarn", "dev"]
