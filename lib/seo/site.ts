@@ -24,6 +24,7 @@ export const ROUTES = {
   home: "/",
   products: "/san-pham",
   news: "/tin-tuc",
+  partner: "/dong-hanh-hung-thinh",
   article: (slug: string) => `/tin-tuc/${encodeURIComponent(slug)}`,
 } as const;
 

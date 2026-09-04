@@ -19,13 +19,39 @@ export default function Footer() {
 								<small>Kiến tạo trật tự an tâm</small>
 							</span>
 						</Link>
-						<p>Hệ sinh thái công nghệ – thương mại – vận hành đa ngành.</p>
+						<p>
+							Hệ sinh thái công nghệ – thương mại – vận hành đa
+							ngành.
+						</p>
+						<div className="footer-legal">
+							<p>
+								<strong>Tên pháp nhân:</strong> CÔNG TY TNHH
+								CÔNG NGHỆ & THƯƠNG MẠI THIÊN ĐĂNG LÊ
+							</p>
+							<p>
+								<strong>Người đại diện:</strong> Lê Duy Phước
+							</p>
+							<p>
+								<strong>Mã số thuế (MST):</strong> 6001844310
+							</p>
+							<p>
+								<strong>Địa chỉ trụ sở:</strong> Số 107/68/41
+								Nguyễn Phúc Chu, Phường Thành Nhất, Tỉnh Đắk
+								Lắk, Việt Nam
+							</p>
+							<p>
+								<strong>Hotline:</strong> 0868861369
+							</p>
+						</div>
 					</div>
 					<div>
 						<h2>Khám phá</h2>
 						<Link href="/#gioi-thieu">Giới thiệu</Link>
 						<Link href="/san-pham">Sản phẩm</Link>
 						<Link href="/tin-tuc">Tin tức</Link>
+						<Link href="/dong-hanh-hung-thinh">
+							Đồng hành hưng thịnh
+						</Link>
 					</div>
 					<div>
 						<h2>Phân hệ</h2>

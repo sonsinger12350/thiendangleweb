@@ -20,8 +20,12 @@ export default function Header() {
 		{
 			href: "/tin-tuc",
 			label: "Tin tức",
-			active:
-				pathname === "/tin-tuc" || pathname.startsWith("/tin-tuc/"),
+			active: pathname === "/tin-tuc" || pathname.startsWith("/tin-tuc/"),
+		},
+		{
+			href: "/dong-hanh-hung-thinh",
+			label: "Đồng hành hưng thịnh",
+			active: pathname === "/dong-hanh-hung-thinh",
 		},
 	];
 

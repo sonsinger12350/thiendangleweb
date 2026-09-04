@@ -28,6 +28,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			changeFrequency: "daily",
 			priority: 0.8,
 		},
+		{
+			url: canonicalUrl("/dong-hanh-hung-thinh"),
+			lastModified: now,
+			changeFrequency: "monthly",
+			priority: 0.8,
+		},
 	];
 
 	const articles = await fetchAllPublishedNews();

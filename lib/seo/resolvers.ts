@@ -4,6 +4,7 @@ import {
   articleBreadcrumbs,
   homeBreadcrumb,
   newsListBreadcrumb,
+  partnerBreadcrumb,
   productsBreadcrumb,
 } from "./breadcrumbs";
 import {
@@ -55,6 +56,20 @@ export function resolveProductsSeo(): SeoPayload {
     ogType: "website",
     schemaKind: "collection",
     breadcrumbs: [homeBreadcrumb(), productsBreadcrumb()],
+  });
+}
+
+export function resolvePartnerSeo(): SeoPayload {
+  return withDefaults({
+    title: "Đồng hành hưng thịnh",
+    description:
+      "Đồng hành cùng TDL — Hưng & Thịnh: kinh doanh có trách nhiệm, an tâm pháp lý, hậu mãi thực tế và phát triển bền vững cho đại lý, nhà cung ứng và chiến binh thực chiến.",
+    keywords:
+      "TDL, Hưng Thịnh, đại lý, đối tác cung ứng, bảo hành, đổi trả, bảo mật thông tin, tuyển dụng",
+    pageUrl: canonicalUrl(ROUTES.partner),
+    ogType: "website",
+    schemaKind: "page",
+    breadcrumbs: [homeBreadcrumb(), partnerBreadcrumb()],
   });
 }
 

@@ -29,10 +29,11 @@ export default async function TinTucPage() {
 			<section className="pagehero">
 				<div className="wrap">
 					<PageBreadcrumb items={seo.breadcrumbs ?? []} />
-					<h1>Tin tức &amp; cập nhật từ hệ sinh thái TDL.</h1>
+					<h1>Nhịp đập hệ sinh thái TDL.</h1>
 					<p>
-						Thông tin chính thức về danh mục ưu tiên giai đoạn đầu, chuẩn vận hành và định hướng phát triển
-						của Thiên Đăng Lê.
+						Cập nhật liên tục các thông tin chính thức về tiêu chuẩn
+						vận hành, sản phẩm chiến lược và những bước tiến mới
+						nhất trên hành trình phụng sự của Thiên Đăng Lê.
 					</p>
 				</div>
 			</section>
@@ -42,10 +43,12 @@ export default async function TinTucPage() {
 					<div className="head">
 						<div>
 							<div className="kicker">Mới nhất</div>
-							<h2>Bài viết &amp; thông báo.</h2>
+							<h2>Góc nhiền &amp; chuyển động.</h2>
 						</div>
 						<p>
-							Nội dung ưu tiên tính kiểm chứng, gắn với năng lực vận hành và danh mục sản phẩm thực tế.
+							Mọi thông tin đều được kiểm chứng dựa trên dữ liệu
+							thực tế, bám sát năng lực vận hành và hệ sinh thái
+							sản phẩm của Thiên Đăng Lê.
 						</p>
 					</div>
 					<NewsGrid
@@ -55,7 +58,10 @@ export default async function TinTucPage() {
 					<div className="cta" style={{ marginTop: 42 }}>
 						<div>
 							<div className="kicker">Theo dõi cập nhật</div>
-							<h2>Nhận thông tin danh mục và hợp tác phân phối từ TDL.</h2>
+							<h2>
+								Nhận thông tin danh mục và hợp tác phân phối từ
+								TDL.
+							</h2>
 						</div>
 						<Link className="btn dark" href="/#lien-he">
 							Liên hệ ngay

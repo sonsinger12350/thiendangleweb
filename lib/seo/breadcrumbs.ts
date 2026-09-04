@@ -25,6 +25,10 @@ export function productsBreadcrumb(): SeoBreadcrumbItem {
   return seoBreadcrumb("Sản phẩm", ROUTES.products);
 }
 
+export function partnerBreadcrumb(): SeoBreadcrumbItem {
+  return seoBreadcrumb("Đồng hành hưng thịnh", ROUTES.partner);
+}
+
 export function articleBreadcrumbs(
   title: string,
   slug: string,

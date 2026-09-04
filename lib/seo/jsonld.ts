@@ -69,6 +69,18 @@ export function buildJsonLd(seo: SeoPayload): {
     });
   }
 
+  if (seo.schemaKind === "page") {
+    graph.push(website, organization, {
+      "@type": "WebPage",
+      "@id": `${seo.pageUrl}#webpage`,
+      name: seo.title,
+      description: seo.description,
+      url: seo.pageUrl,
+      isPartOf: { "@id": websiteId },
+      publisher: { "@id": organizationId },
+    });
+  }
+
   if (seo.schemaKind === "article") {
     const image =
       seo.ogImage && seo.ogImageWidth && seo.ogImageHeight

@@ -1,4 +1,4 @@
-export type SchemaKind = "landing" | "article" | "collection" | "none";
+export type SchemaKind = "landing" | "article" | "collection" | "page" | "none";
 
 export interface SeoBreadcrumbItem {
   name: string;

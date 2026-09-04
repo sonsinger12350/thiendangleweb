@@ -22,10 +22,10 @@ export default function Home() {
 							</h1>
 							<p className="lead">
 								TDL kiến tạo một hệ sinh thái tích hợp giữa công
-								nghệ, thương mại và vận hành. Mỗi quyết định
-								phát triển đều được đặt trên nền tảng dữ liệu,
-								hiệu quả tài chính và năng lực triển khai thực
-								tế.
+								nghệ, thương mại và vận hành. Mỗi bước phát
+								triển đều dựa trên sự rõ ràng và năng lực thực
+								tế, với mục tiêu mang đến những sản phẩm dịch vụ
+								tốt hơn để phụng sự người Việt
 							</p>
 							<div className="actions">
 								<Link className="btn dark" href="#gioi-thieu">
@@ -199,12 +199,13 @@ export default function Home() {
 							Một doanh nghiệp thực chiến, được xây dựng cho giá
 							trị dài hạn.
 						</h2>
-						<p>
-							TDL được hình thành từ kinh nghiệm nhiều năm trong
-							lĩnh vực kinh doanh sỉ tại Tây Nguyên, cùng nhu cầu
-							xây dựng một mô hình vận hành minh bạch hơn, dựa
-							trên dữ liệu và có khả năng tạo dựng niềm tin lâu
-							dài.
+						<p style={{ textAlign: "justify" }}>
+							Từ nhiều năm gắn bó với đối tác và tiếp xúc nhu cầu
+							tiêu dùng của người Việt với mạng lưới kinh doanh
+							tại Tây Nguyên, TDL ra đời không chỉ để bán hàng.
+							Chúng tôi muốn xây dựng hệ thống kinh doanh rõ ràng
+							hơn, thực tế hơn để giữ niềm tin của mọi đối tác và
+							khách hàng trong chặng đường dài.
 						</p>
 						<div className="split">
 							<div>
@@ -218,15 +219,22 @@ export default function Home() {
 								</h2>
 							</div>
 							<div>
-								<p>
-									TDL không theo đuổi quy mô hình thức khi nền
-									tảng chưa sẵn sàng. Doanh nghiệp ưu tiên xây
-									dựng năng lực cốt lõi: phát triển doanh số
-									bền vững, kiểm soát hàng hóa, bảo đảm thu
-									hồi công nợ, chuẩn hóa dữ liệu và gìn giữ
-									niềm tin của khách hàng, đối tác.
+								<p style={{ textAlign: "justify" }}>
+									Thay vì vội vã mở rộng phô trương, TDL chọn
+									đi từng bước thật vững vàng. Chúng tôi ưu
+									tiên xây dựng nền móng bền chặt: giữ nguồn
+									hàng chất lượng, nguồn gốc rõ ràng, giá
+									thành đúng với giá trị mang lại nhằm đảm bảo
+									lợi ích, uy tín, hậu mãi công bằng cho đại
+									lý, và giao dịch minh bạch để bảo vệ quyền
+									lợi, niềm tin người tiêu dùng. TDL hoạt động
+									như một hệ sinh thái thống nhất. Mỗi bộ phận
+									bên trong dù đảm nhận vai trò khác nhau,
+									nhưng đều hướng về một nguyên tắc: rõ ràng
+									mọi thông tin và tận tâm phụng sự người
+									Việt.
 								</p>
-								<p>
+								<p style={{ textAlign: "justify" }}>
 									TDL — Thiên Đăng Lê là thương hiệu mẹ định
 									hướng hệ sinh thái. Trong giai đoạn đầu,
 									doanh nghiệp vận hành theo mô hình một pháp
@@ -247,11 +255,15 @@ export default function Home() {
 								<div className="kicker">
 									Tuyên ngôn định hướng
 								</div>
-								<h2 className="statement">
+								<h2
+									className="statement"
+									style={{ textAlign: "justify" }}
+								>
 									&ldquo;Dùng ánh sáng của <em>minh bạch</em>{" "}
-									để tạo trật tự. Thiết lập kỷ cương, phân
-									quyền và cơ chế kiểm soát để bảo vệ niềm
-									tin.&rdquo;
+									để tạo trật tự. Dùng công nghệ để kết nối
+									thị trường. Dùng kỷ cương để giữ niềm tin.
+									Dùng sản phẩm và dịch vụ tốt hơn để phụng sự
+									người Việt.&rdquo;
 								</h2>
 							</div>
 							<p>
@@ -262,34 +274,37 @@ export default function Home() {
 						</div>
 						<div className="values">
 							<div className="value">
-								<b>Minh bạch</b>
+								<b>Minh bạch thông tin</b>
 								<span>
-									Thông tin, giá, chính sách và trách nhiệm
-									được công khai, lưu vết và có thể đối soát.
+									Mọi chính sách, giá cả và nguồn gốc hàng hóa
+									đều được công khai rõ ràng, bảo vệ quyền lợi
+									tối đa cho đại lý và người tiêu dùng.
 								</span>
 							</div>
 							<div className="value">
-								<b>Kỷ cương</b>
+								<b>Giữ vững kỷ cương</b>
 								<span>
-									Mọi bước mở rộng phải đi cùng tiêu chuẩn vận
-									hành, phân quyền và cơ chế chịu trách nhiệm
-									rõ ràng.
+									Làm đúng cam kết, chịu trách nhiệm đến cùng.
+									Mở rộng đến đâu, chất lượng phục vụ và sự an
+									tâm phải được đảm bảo đến đó.
 								</span>
 							</div>
 							<div className="value">
-								<b>Zero Trust</b>
+								<b>Niềm tin kiểm chứng</b>
 								<span>
-									Các giao dịch, dữ liệu và quyền hạn trọng
-									yếu được xác thực theo nguyên tắc Zero
-									Trust.
+									Chúng tôi không hoạt động dựa trên lời hứa
+									suông. Mọi giao dịch, thông tin đều được dựa
+									trên dữ liệu thực tế và có kiểm chứng rõ
+									ràng.
 								</span>
 							</div>
 							<div className="value">
-								<b>Thực chiến</b>
+								<b>Giá trị thực chiến</b>
 								<span>
-									Ưu tiên hiệu quả kinh doanh thực tế: dòng
-									tiền, hàng hóa, khách hàng và chất lượng vận
-									hành.
+									Tập trung vào hiệu quả thực tế: mang lại
+									dòng tiền ổn định cho đối tác, và cung cấp
+									sản phẩm có giá trị thật cho người dùng
+									cuối.
 								</span>
 							</div>
 						</div>
@@ -302,14 +317,16 @@ export default function Home() {
 					<div className="wrap">
 						<div className="crumb">TDL / Liên hệ</div>
 						<h2 className="pagehero-title">
-							Khởi đầu một cuộc trao đổi minh bạch và hướng đến
-							giá trị thực.
+							Bắt đầu mọi sự kết nối bằng sự rõ ràng và giá trị
+							thực.
 						</h2>
 						<p>
-							TDL trân trọng cơ hội hợp tác với khách hàng, đại
-							lý, nhà cung cấp, đối tác công nghệ và các cộng sự
-							cùng chia sẻ định hướng phát triển minh bạch, có
-							trách nhiệm và bền vững.
+							TDL luôn trân trọng mọi cơ hội đồng hành cùng các
+							đại lý, nhà cung cấp và khách hàng. Chúng tôi tìm
+							kiếm những cộng sự đề cao trách nhiệm trong kinh
+							doanh cùng nhau lấy chữ &quot;Tâm&quot; làm gốc để
+							trao gửi những giá trị thiết thực đến người tiêu
+							dùng Việt.
 						</p>
 					</div>
 				</section>
@@ -322,7 +339,7 @@ export default function Home() {
 							<p>
 								Các trao đổi chính thức được thực hiện qua thư
 								điện tử thuộc tên miền @thiendangle.com.{" "}
-								<b>TDL</b> là thương hiệu giới thiệu;
+								<b>TDL</b> là thương hiệu giới thiệu.
 							</p>
 							<div className="contact-list">
 								<div>
