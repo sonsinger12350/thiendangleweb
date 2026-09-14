@@ -81,7 +81,7 @@ export default function Home() {
 								</h2>
 							</div>
 							<p>
-								Tóm tắt sáu phân hệ quanh thương hiệu mẹ TDL.
+								Tóm tắt sáu phân hệ quanh thương hiệu chính TDL.
 								Mỗi phân hệ giữ một vai trò chuyên biệt trong hệ
 								giá trị chung.
 							</p>
@@ -235,7 +235,7 @@ export default function Home() {
 									Việt.
 								</p>
 								<p style={{ textAlign: "justify" }}>
-									TDL — Thiên Đăng Lê là thương hiệu mẹ định
+									TDL — Thiên Đăng Lê là thương hiệu chính định
 									hướng hệ sinh thái. Trong giai đoạn đầu,
 									doanh nghiệp vận hành theo mô hình một pháp
 									nhân trung tâm (đang hoàn tất thủ tục đăng
