@@ -29,6 +29,10 @@ export function partnerBreadcrumb(): SeoBreadcrumbItem {
   return seoBreadcrumb("Đồng hành hưng thịnh", ROUTES.partner);
 }
 
+export function privacyBreadcrumb(): SeoBreadcrumbItem {
+  return seoBreadcrumb("Chính sách bảo mật", ROUTES.privacy);
+}
+
 export function articleBreadcrumbs(
   title: string,
   slug: string,

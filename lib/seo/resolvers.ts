@@ -5,6 +5,7 @@ import {
   homeBreadcrumb,
   newsListBreadcrumb,
   partnerBreadcrumb,
+  privacyBreadcrumb,
   productsBreadcrumb,
 } from "./breadcrumbs";
 import {
@@ -70,6 +71,18 @@ export function resolvePartnerSeo(): SeoPayload {
     ogType: "website",
     schemaKind: "page",
     breadcrumbs: [homeBreadcrumb(), partnerBreadcrumb()],
+  });
+}
+
+export function resolvePrivacySeo(title = "Chính sách bảo mật"): SeoPayload {
+  return withDefaults({
+    title,
+    description:
+      "Chính sách bảo mật dữ liệu và thông tin người dùng của TDL — Thiên Đăng Lê.",
+    pageUrl: canonicalUrl(ROUTES.privacy),
+    ogType: "website",
+    schemaKind: "page",
+    breadcrumbs: [homeBreadcrumb(), privacyBreadcrumb()],
   });
 }
 

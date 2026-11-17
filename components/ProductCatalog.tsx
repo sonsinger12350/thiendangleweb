@@ -48,17 +48,6 @@ function productTag(product: {
 	);
 }
 
-function formatVnd(price: string | number | null | undefined): string | null {
-	const value = Number(price);
-	if (!Number.isFinite(value) || value <= 0) return null;
-
-	return new Intl.NumberFormat("vi-VN", {
-		style: "currency",
-		currency: "VND",
-		maximumFractionDigits: 0,
-	}).format(value);
-}
-
 type ProductCatalogProps = {
 	initialProducts?: ApiResponse<Product[]>;
 	initialFilters?: ApiResponse<ProductFilters>;
@@ -306,10 +295,7 @@ export default function ProductCatalog({
 
 				{!isError && (
 					<div className="product-list">
-						{products.map((product) => {
-							const formattedPrice = formatVnd(product.price);
-
-							return (
+						{products.map((product) => (
 								<article
 									key={product.id}
 									className="product-row"
@@ -352,22 +338,15 @@ export default function ProductCatalog({
 										{/* <span className="status-pill">
 										{product.status_label}
 									</span> */}
-										{formattedPrice ? (
-											<span className="product-price">
-												{formattedPrice}
-											</span>
-										) : (
-											<Link
-												className="btn dark"
-												href={`/?product_id=${product.id}#lien-he`}
-											>
-												Liên hệ
-											</Link>
-										)}
+										<Link
+											className="btn dark"
+											href={`/?product_id=${product.id}#lien-he`}
+										>
+											Liên hệ
+										</Link>
 									</div>
 								</article>
-							);
-						})}
+						))}
 					</div>
 				)}
 

@@ -16,3 +16,7 @@ export const WebsiteNewsEndpoints = {
   getBySlug: (slug: string) => `/website/news/${slug}`,
   categories: (params?: string) => `/website/news/categories${params ?? ""}`,
 } as const;
+
+export const WholesalePolicyEndpoints = {
+  getById: (id: string | number) => `/wholesale-policies/${id}`,
+} as const;

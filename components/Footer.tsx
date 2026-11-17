@@ -49,6 +49,9 @@ export default function Footer() {
 						<Link href="/#gioi-thieu">Giới thiệu</Link>
 						<Link href="/san-pham">Sản phẩm</Link>
 						<Link href="/tin-tuc">Tin tức</Link>
+						<Link href="/chinh-sach-bao-mat">
+							Chính sách bảo mật
+						</Link>
 						<Link href="/dong-hanh-hung-thinh">
 							Đồng hành hưng thịnh
 						</Link>

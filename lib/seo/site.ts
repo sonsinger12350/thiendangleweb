@@ -25,6 +25,7 @@ export const ROUTES = {
   products: "/san-pham",
   news: "/tin-tuc",
   partner: "/dong-hanh-hung-thinh",
+  privacy: "/chinh-sach-bao-mat",
   article: (slug: string) => `/tin-tuc/${encodeURIComponent(slug)}`,
 } as const;
 
