@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { fetchAllPublishedNews } from "@/api/services/news-server";
 import { ROUTES, getSiteOrigin } from "@/lib/seo/site";
 import { canonicalUrl } from "@/lib/seo/urls";
+import { WHOLESALE_POLICY_LIST } from "@/lib/wholesale-policies";
 
 export const revalidate = 60;
 
@@ -34,12 +35,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			changeFrequency: "monthly",
 			priority: 0.8,
 		},
-		{
-			url: canonicalUrl(ROUTES.privacy),
+		...WHOLESALE_POLICY_LIST.map((policy) => ({
+			url: canonicalUrl(policy.path),
 			lastModified: now,
-			changeFrequency: "monthly",
+			changeFrequency: "monthly" as const,
 			priority: 0.5,
-		},
+		})),
 	];
 
 	const articles = await fetchAllPublishedNews();

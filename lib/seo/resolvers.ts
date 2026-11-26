@@ -5,7 +5,7 @@ import {
   homeBreadcrumb,
   newsListBreadcrumb,
   partnerBreadcrumb,
-  privacyBreadcrumb,
+  policyBreadcrumb,
   productsBreadcrumb,
 } from "./breadcrumbs";
 import {
@@ -75,14 +75,20 @@ export function resolvePartnerSeo(): SeoPayload {
 }
 
 export function resolvePrivacySeo(title = "Chính sách bảo mật"): SeoPayload {
+  return resolvePolicySeo(title, ROUTES.privacy);
+}
+
+export function resolvePolicySeo(title: string, path: string): SeoPayload {
   return withDefaults({
     title,
     description:
-      "Chính sách bảo mật dữ liệu và thông tin người dùng của TDL — Thiên Đăng Lê.",
-    pageUrl: canonicalUrl(ROUTES.privacy),
+      path === ROUTES.privacy
+        ? "Chính sách bảo mật dữ liệu và thông tin người dùng của TDL — Thiên Đăng Lê."
+        : `${title} của TDL — Thiên Đăng Lê.`,
+    pageUrl: canonicalUrl(path),
     ogType: "website",
     schemaKind: "page",
-    breadcrumbs: [homeBreadcrumb(), privacyBreadcrumb()],
+    breadcrumbs: [homeBreadcrumb(), policyBreadcrumb(title, path)],
   });
 }
 

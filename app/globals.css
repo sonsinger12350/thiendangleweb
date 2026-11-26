@@ -2336,10 +2336,6 @@ html {
 	background: var(--ivory);
 }
 
-.policy-wrap {
-	width: min(900px, calc(100% - 42px));
-}
-
 .policy-content {
 	padding: clamp(24px, 5vw, 56px);
 	border: 1px solid var(--line);

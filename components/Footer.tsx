@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { WHOLESALE_POLICY_LIST } from "@/lib/wholesale-policies";
 
 export default function Footer() {
 	return (
@@ -49,21 +50,17 @@ export default function Footer() {
 						<Link href="/#gioi-thieu">Giới thiệu</Link>
 						<Link href="/san-pham">Sản phẩm</Link>
 						<Link href="/tin-tuc">Tin tức</Link>
-						<Link href="/chinh-sach-bao-mat">
-							Chính sách bảo mật
-						</Link>
 						<Link href="/dong-hanh-hung-thinh">
 							Đồng hành hưng thịnh
 						</Link>
 					</div>
 					<div>
-						<h2>Phân hệ</h2>
-						<Link href="/#trang-chu">Hồng Đức</Link>
-						<Link href="/#trang-chu">Hưng &amp; Thịnh</Link>
-						<Link href="/#trang-chu">Tâm An Việt</Link>
-						<Link href="/#trang-chu">Long Hành</Link>
-						<Link href="/#trang-chu">D-Tech</Link>
-						<Link href="/#trang-chu">Ánh Nhật</Link>
+						<h2>Chính sách</h2>
+						{WHOLESALE_POLICY_LIST.map((policy) => (
+							<Link key={policy.id} href={policy.path}>
+								{policy.label}
+							</Link>
+						))}
 					</div>
 					<div>
 						<h2>Liên hệ</h2>
