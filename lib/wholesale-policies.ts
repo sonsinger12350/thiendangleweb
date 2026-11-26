@@ -24,6 +24,11 @@ export const WHOLESALE_POLICIES = {
     label: "Chính sách đổi trả & bảo hành",
     path: "/chinh-sach-doi-tra-bao-hanh",
   },
+  bilateralAgreement: {
+    id: 6,
+    label: "Thỏa thuận hợp tác song phương",
+    path: "/thoa-thuan-hop-tac-song-phuong",
+  },
 } as const;
 
 export const WHOLESALE_POLICY_LIST = Object.values(WHOLESALE_POLICIES);
